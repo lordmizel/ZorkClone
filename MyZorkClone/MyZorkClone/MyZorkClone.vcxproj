@@ -114,10 +114,13 @@
     <ClCompile Include="..\..\..\..\Master\ZorkClone\ZorcClone\ZorcClone\Entity.cpp" />
     <ClCompile Include="..\..\..\..\Master\ZorkClone\ZorcClone\ZorcClone\main.cpp" />
     <ClCompile Include="..\..\..\..\Master\ZorkClone\ZorcClone\ZorcClone\World.cpp" />
+    <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\Master\ZorkClone\ZorcClone\ZorcClone\Entity.h" />
     <ClInclude Include="..\..\..\..\Master\ZorkClone\ZorcClone\ZorcClone\World.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Room.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
