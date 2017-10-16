@@ -111,16 +111,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\Master\ZorkClone\ZorcClone\ZorcClone\Entity.cpp" />
-    <ClCompile Include="..\..\..\..\Master\ZorkClone\ZorcClone\ZorcClone\main.cpp" />
-    <ClCompile Include="..\..\..\..\Master\ZorkClone\ZorcClone\ZorcClone\World.cpp" />
+    <ClCompile Include="Creature.cpp" />
+    <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="Exit.cpp" />
+    <ClCompile Include="Item.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="Npc.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Room.cpp" />
+    <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\Master\ZorkClone\ZorcClone\ZorcClone\Entity.h" />
-    <ClInclude Include="..\..\..\..\Master\ZorkClone\ZorcClone\ZorcClone\World.h" />
+    <ClInclude Include="Creature.h" />
+    <ClInclude Include="Entity.h" />
+    <ClInclude Include="Exit.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="Monster.h" />
+    <ClInclude Include="Npc.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Room.h" />
+    <ClInclude Include="World.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

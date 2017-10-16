@@ -1,9 +1,17 @@
-//TODO: TODO
+#ifndef __Player__
+#define __Player__
 
-class Player {
+#include <string>
+#include "Entity.h"
+#include "Creature.h"
+
+class Room;
+
+class Player : public Creature {
 public:
-	Player(const char* name, const char* description, Room* room);
+	Player(const std::string name, const std::string description, Room* room);
 	~Player();
 private:
 
 };
+#endif
