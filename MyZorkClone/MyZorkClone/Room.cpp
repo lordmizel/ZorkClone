@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Room.h"
 
 
@@ -9,4 +10,9 @@ Room::Room(const string name, const string description) : Entity(name, descripti
 }
 
 Room::~Room(){
+}
+
+void Room::Look() const
+{
+	cout << description << endl;
 }

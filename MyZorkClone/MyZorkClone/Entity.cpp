@@ -23,13 +23,24 @@ void Entity::Look() const{
 
 
 void Entity::ChangeContainer(Entity* newContainer){
-	if (containedIn != NULL) {
+	if (containedIn != NULL) 
+	{
 		containedIn->entitiesContained.remove(this);
 	}
-	if (newContainer != NULL) {
+	if (newContainer != NULL) 
+	{
 		newContainer->entitiesContained.push_back(this);
 	}
 	containedIn = newContainer;
+}
+
+void Entity::FindAll(typeOfEntity type, list<Entity*>& listOfStuff) const
+{
+	for (list<Entity*>::const_iterator it = entitiesContained.begin(); it != entitiesContained.cend(); ++it)
+	{
+		if ((*it)->type == type)
+			listOfStuff.push_back(*it);
+	}
 }
 
 //TODO: Entity finders

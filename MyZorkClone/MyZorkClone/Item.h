@@ -7,7 +7,7 @@
 class Item : public Entity {
 public:
 
-	Item(const std::string name, const std::string description, Room* room);
+	Item(const std::string name, const std::string description, Entity* containedIn);
 	~Item();
 
 public:
