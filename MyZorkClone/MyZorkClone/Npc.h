@@ -11,6 +11,8 @@ class Npc : public Creature {
 public:
 	Npc(const std::string name, const std::string description, Room* room);
 	~Npc();
+
+	void UpdateConversation();
 private:
 
 };

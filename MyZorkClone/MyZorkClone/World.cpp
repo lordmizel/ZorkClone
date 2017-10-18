@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
+#include <time.h>		//////////////////////////
 #include "Item.h"
+#include "Monster.h"
 #include "Player.h"
 #include "Room.h"
 #include "World.h"
@@ -32,18 +34,26 @@ World::World(){
 	Room* warehouse = new Room("Warehouse", "You're in a dark and creepy warehouse. You SWEAR you saw something moving through the corner of your eye.");
 
 	// -- Player --
-	player = new Player("The kid", "You're just a normal kid who still has a spark of illusion in your eyes.", bedroom);
+	player = new Player("The kid", "You're just a normal kid who still has a spark of peppiness in your eyes.", bedroom);
 
 	// -- Items --
 	Item* key = new Item("Key", "This key is decorated with a cute squid keychain.", player);
 
+	// -- Monster --
+	srand(time(NULL));
+	Monster* monster1 = new Monster("", "", bedroom);
+	Monster* monster2 = new Monster("", "", bedroom);
+	Monster* monster3 = new Monster("", "", bedroom);
+	Monster* monster4 = new Monster("", "", bedroom);
+	Monster* monster5 = new Monster("", "", bedroom);
 	
 }
 
 
 World::~World(){
-	for (list<Entity*>::iterator it = entities.begin(); it != entities.end(); ++it)
+	for (list<Entity*>::iterator it = entities.begin(); it != entities.end(); ++it) {
 		delete *it;
+	}
 
 	entities.clear();
 }
@@ -63,7 +73,7 @@ void World::TakeAction(vector<string> &actions){
 		} 
 		else if (actions[0] == "LOOK") 
 		{
-
+			player->Look(actions);
 		} 
 		else if (actions[0] == "RUN" || actions[0] == "ESCAPE" || actions[0] == "FLEE") 
 		{
@@ -78,7 +88,7 @@ void World::TakeAction(vector<string> &actions){
 		// Two-word commands
 		if (actions[0] == "LOOK" || actions[0] == "EXAMINE") 
 		{
-
+			player->Look(actions);
 		} 
 		else if (actions[0] == "GO") 
 		{

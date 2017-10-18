@@ -25,7 +25,7 @@ public:
 
 	Entity(const std::string name, const std::string description, Entity* containedIn);
 	~Entity();
-	void Look() const;
+	virtual void Look() const;
 	void ChangeContainer(Entity* newContainer);
 
 	void FindAll(typeOfEntity type, std::list<Entity*>& listOfStuff) const;
