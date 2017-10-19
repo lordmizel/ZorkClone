@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Npc::Npc(const std::string name, const std::string description, Room * room) : Creature(name, description, room)
+Npc::Npc(const string name, const string description, Room * room) : Creature(name, description, room)
 {
 	type = NPC;
 }

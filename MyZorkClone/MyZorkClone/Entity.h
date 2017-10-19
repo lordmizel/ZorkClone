@@ -24,7 +24,7 @@ public:
 	std::list<Entity*> entitiesContained;
 
 	Entity(const std::string name, const std::string description, Entity* containedIn);
-	~Entity();
+	virtual ~Entity();
 	virtual void Look() const;
 	void ChangeContainer(Entity* newContainer);
 

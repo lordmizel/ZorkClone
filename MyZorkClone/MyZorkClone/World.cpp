@@ -3,6 +3,7 @@
 #include <time.h>
 #include "Exit.h"
 #include "Item.h"
+#include "Npc.h"
 #include "Monster.h"
 #include "Player.h"
 #include "Room.h"
@@ -46,11 +47,14 @@ World::World(){
 	Exit* squareToWarehouse = new Exit("WAREHOUSE", "WAREHOUSE", "There's an old warehouse nearby, with a shaky-looking door.", townSquare, warehouse, true);
 	Exit* warehouseToSquare = new Exit("DOOR", "TOWN", "You can always take the door back to the town square.", warehouse, townSquare);
 
+	// -- Npcs --
+	Npc* mother = new Npc("mother", "Your mother is watching TV on the sofa while muching a bunch of chips.", bedroom);
+
 	// -- Player --
 	player = new Player("The kid", "You're just a normal kid who still has a spark of peppiness in your eyes.", bedroom);
 
 	// -- Items --
-	Item* key = new Item("Key", "This key is decorated with a cute squid keychain.", player);
+	Item* key = new Item("key", "This key is decorated with a cute squid keychain.", bedroom);
 
 	// -- Monster --
 	srand(time(NULL));

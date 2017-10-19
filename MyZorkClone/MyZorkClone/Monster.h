@@ -1,5 +1,5 @@
-#ifndef __NPC__
-#define __NPC__
+#ifndef __Monster__
+#define __Monster__
 
 #include <string>
 #include "Entity.h"

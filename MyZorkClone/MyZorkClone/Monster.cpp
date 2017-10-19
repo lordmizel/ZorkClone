@@ -11,6 +11,9 @@ Monster::Monster(string name, string description, Room * room) : Creature(name, 
 {
 	type = MONSTER;
 	CreateMonster(name, description, description2);
+	this->name = name;
+	this->description = description;
+	this->description2 = description2;
 }
 
 Monster::~Monster()

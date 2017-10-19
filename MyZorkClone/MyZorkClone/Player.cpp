@@ -6,7 +6,7 @@
 using namespace std;
 
 Player::Player(const string name, const string description, Room * room) : Creature(name, description, room) {
-	type = ITEM;
+	type = PLAYER;
 }
 
 Player::~Player()
@@ -80,6 +80,7 @@ bool Player::Go(const vector<string>& args)
 {
 	Room* presentRoom = (Room*)containedIn;
 	Exit* exit = presentRoom->GetExit(args[1]);
+
 	if (exit == nullptr)
 	{
 		cout << "That's not a place you can GO to." << endl;
@@ -90,6 +91,7 @@ bool Player::Go(const vector<string>& args)
 		cout << "Seems like this door is locked." << endl;
 		return false;
 	}
+
 	ChangeContainer(exit->destination);
 	containedIn->Look();
 	return true;
