@@ -78,7 +78,21 @@ void Player::Escape(const vector<string>& args)
 
 bool Player::Go(const vector<string>& args)
 {
-	return false;
+	Room* presentRoom = (Room*)containedIn;
+	Exit* exit = presentRoom->GetExit(args[1]);
+	if (exit == nullptr)
+	{
+		cout << "That's not a place you can GO to." << endl;
+		return false;
+	}
+	if (exit->locked == true)
+	{
+		cout << "Seems like this door is locked." << endl;
+		return false;
+	}
+	ChangeContainer(exit->destination);
+	containedIn->Look();
+	return true;
 }
 
 bool Player::Attack(const vector<string>& args)

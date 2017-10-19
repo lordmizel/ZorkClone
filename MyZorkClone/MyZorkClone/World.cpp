@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
-#include <time.h>		//////////////////////////
+#include <time.h>
+#include "Exit.h"
 #include "Item.h"
 #include "Monster.h"
 #include "Player.h"
@@ -32,6 +33,18 @@ World::World(){
 	Room* laboratory = new Room("Laboratory", "Professor Stump's laboratory. There's cool technological stuff you don't really understand laying around everywhere.");
 	Room* backyard = new Room("Backyard", "Stump's backyard is not too unlike a jungle. One thing is certain, she's not too keen on gardening.");
 	Room* warehouse = new Room("Warehouse", "You're in a dark and creepy warehouse. You SWEAR you saw something moving through the corner of your eye.");
+
+	// -- Exits --
+	Exit* bedroomToHouse = new Exit("STAIRS", "DOWN", "There's a set of stairs going down to the first floor.", bedroom, house);
+	Exit* houseToBedroom = new Exit("STAIRS", "UP", "There's a set of stairs going up to your bedroom.", house, bedroom);
+	Exit* houseToSquare = new Exit("DOOR", "TOWN", "You can exit your house through the front door from here.", house, townSquare);
+	Exit* squareToHouse = new Exit("HOUSE", "HOUSE", "Your house is right there, and the door is usually open.", townSquare, house);
+	Exit* squareToLab = new Exit("LABORATORY", "LAB", "Dr. Stump's laboratory is near. She's got an open doors policy.", townSquare, laboratory);
+	Exit* labToSquare = new Exit("DOOR", "TOWN", "The door behind you goes straight back to town.", laboratory, townSquare);
+	Exit* squareToBackyard = new Exit("PATH", "BACKYARD", "A messy path of thistles and nettles goes to Dr. Stump's backyard.", townSquare, backyard);
+	Exit* backyardToSquare = new Exit("PATH", "TOWN", "The grassy path behind you would probably take you back to civilization.", backyard, townSquare);
+	Exit* squareToWarehouse = new Exit("WAREHOUSE", "WAREHOUSE", "There's an old warehouse nearby, with a shaky-looking door.", townSquare, warehouse, true);
+	Exit* warehouseToSquare = new Exit("DOOR", "TOWN", "You can always take the door back to the town square.", warehouse, townSquare);
 
 	// -- Player --
 	player = new Player("The kid", "You're just a normal kid who still has a spark of peppiness in your eyes.", bedroom);
@@ -92,7 +105,7 @@ void World::TakeAction(vector<string> &actions){
 		} 
 		else if (actions[0] == "GO") 
 		{
-
+			player->Go(actions);
 		} 
 		else if (actions[0] == "ATTACK") 
 		{

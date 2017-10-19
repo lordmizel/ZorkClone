@@ -2,6 +2,7 @@
 #define __Room__
 
 #include "Entity.h"
+#include "Exit.h"
 
 class Room : public Entity {
 public:
@@ -10,6 +11,8 @@ public:
 	~Room();
 
 	void Look() const;
+	Exit* GetExit(const std::string name);
+	
 
 public:
 };

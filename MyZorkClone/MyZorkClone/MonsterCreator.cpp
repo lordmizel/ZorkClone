@@ -82,7 +82,7 @@ vector<string> extraFeature = {
 	"a yellow turtle-like shell",
 	"spikes everywhere",
 	"a distant, vacant expression",
-	"two heads, for some reason,",
+	"two heads, for some reason",
 	"creepy human-like features"
 };
 
@@ -111,9 +111,6 @@ void CreateMonster(string & name, string & description, string & description2)
 	int creatureType = rand() % secondPartOfName.size();
 	
 	name = firstPartOfName[creaturePower] + secondPartOfName[creatureType];
-	cout << name << endl;
 	description = "It's a " + name + "! This " + typeOfAnimal[creatureType] + "-like monster has the power of " + specialPower[creaturePower];
 	description2 = "It's got " + extraFeature[rand() % extraFeature.size()] + ", and it's also known to " + extraInfo[rand() % extraInfo.size()];
-	cout << description << endl;
-	cout << description2 << endl;
 }
