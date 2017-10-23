@@ -56,25 +56,25 @@ vector<string> specialPower = {
 };
 
 vector<string> firstPartOfName = {
-	"Pyr",
-	"Plasm",
-	"Seism",
-	"Elec",
-	"Aer",
-	"Crane",
-	"Glutt",
-	"Psycho",
-	"Aqu",
-	"Blink",
-	"Venom",
-	"Aud",
-	"Crissant"
+	"pyr",
+	"plasm",
+	"seism",
+	"elec",
+	"aer",
+	"crane",
+	"glutt",
+	"psycho",
+	"aqu",
+	"blink",
+	"venom",
+	"aud",
+	"crissant"
 };
 
 vector<string> extraFeature = {
 	"long rabbit-like ears",
 	"sharp and menacing teeth",
-	"a head twice the size of it's torso",
+	"a head twice as big as it's torso",
 	"rainbow-colored scales",
 	"way too many legs",
 	"eyes that stare through your soul",

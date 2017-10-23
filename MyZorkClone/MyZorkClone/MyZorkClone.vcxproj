@@ -120,11 +120,13 @@
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="MonsterCreator.cpp" />
     <ClCompile Include="Npc.cpp" />
+    <ClCompile Include="NpcInteractions.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Room.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Battle.h" />
     <ClInclude Include="Creature.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Exit.h" />
@@ -133,6 +135,7 @@
     <ClInclude Include="Monster.h" />
     <ClInclude Include="MonsterCreator.h" />
     <ClInclude Include="Npc.h" />
+    <ClInclude Include="NpcInteractions.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Room.h" />
     <ClInclude Include="World.h" />

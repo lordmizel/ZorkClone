@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Creature.h"
 
 using namespace std;
@@ -9,4 +10,9 @@ Creature::Creature(const string name, const string description, Room * room) : E
 
 Creature::~Creature()
 {
+}
+
+void Creature::Look()
+{
+	cout << description << endl;
 }

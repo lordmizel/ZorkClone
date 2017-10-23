@@ -10,6 +10,7 @@ class World {
 public:
 	World();
 	~World();
+
 	void TakeAction(std::vector<std::string> &action);
 
 private:

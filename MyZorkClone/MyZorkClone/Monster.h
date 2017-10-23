@@ -12,7 +12,7 @@ public:
 	Monster(const std::string name, const std::string description, Room* room);
 	~Monster();
 
-	//void Look() const;
+	void Look() const;
 
 	std::string description2;
 

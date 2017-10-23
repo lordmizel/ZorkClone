@@ -13,6 +13,10 @@ public:
 	Creature(const std::string name, const std::string description, Room* room);
 	~Creature();
 
+	void Look();
+
+	int maxHP;
+	int currentHP;
 public:
 };
 

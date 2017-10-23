@@ -46,7 +46,7 @@ void Room::Look() const
 		if ((*it)->type == NPC)
 		{
 			Npc* npc = (Npc*)*it;
-			cout << npc->name << " is standing around." << endl;
+			cout << "You see " << npc->name << " standing around." << endl;
 		}
 	}
 

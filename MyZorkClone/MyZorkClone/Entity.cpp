@@ -14,6 +14,13 @@ Entity::Entity(const string name, const string description, Entity* containedIn 
 
 
 Entity::~Entity(){
+	for (list<Entity*>::reverse_iterator it = entitiesContained.rbegin(); it != entitiesContained.rend(); ++it)
+	{
+		if ((*it) != nullptr) {
+			delete *it;
+			(*it) = nullptr;
+		}
+	}
 }
 
 
@@ -42,5 +49,30 @@ void Entity::FindAll(typeOfEntity type, list<Entity*>& listOfStuff) const
 			listOfStuff.push_back(*it);
 	}
 }
+
+Entity * Entity::Find(const std::string & name, typeOfEntity type) const
+{
+	for (list<Entity*>::const_iterator it = entitiesContained.begin(); it != entitiesContained.cend(); ++it)
+	{
+		if ((*it)->type == type)
+		{
+			if ((*it)->name == name)
+				return *it;
+		}
+	}
+
+	return nullptr;
+}
+
+//Entity * Entity::Find(typeOfEntity type) const
+//{
+//	for (list<Entity*>::const_iterator it = entitiesContained.begin(); it != entitiesContained.cend(); ++it)
+//	{
+//		if ((*it)->type == type)
+//			return *it;
+//	}
+//
+//	return nullptr;
+//}
 
 //TODO: Entity finders

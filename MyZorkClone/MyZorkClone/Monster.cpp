@@ -20,4 +20,8 @@ Monster::~Monster()
 {
 }
 
-
+void Monster::Look() const
+{
+	cout << description << endl;
+	cout << description2 << endl;
+}

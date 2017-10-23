@@ -3,6 +3,7 @@
 
 using namespace std;
 
+
 string StringToUppercase(string & myString)
 {
 	int i = 0;
