@@ -23,11 +23,11 @@ Item::~Item()
 {
 }
 
-void Item::Look()
+void Item::Look() const
 {
-	cout << "You see a " << name << "." << endl;
+	cout << description << endl;
 
-	if (this->isContainer == true) {
+	if (isContainer == true) {
 		for (list<Entity*>::const_iterator it = this->entitiesContained.begin(); it != this->entitiesContained.cend(); ++it) {
 			cout << "There's a " << (*it)->name << " in the " << name << "." << endl;
 		}

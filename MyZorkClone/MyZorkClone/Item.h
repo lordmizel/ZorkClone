@@ -12,7 +12,7 @@ public:
 	Item(const std::string name, const std::string description, Entity* containedIn, bool isContainer, bool grabbable);
 	~Item();
 
-	void Look();
+	void Look() const;
 
 	bool isContainer = false;
 	bool grabbable = true;

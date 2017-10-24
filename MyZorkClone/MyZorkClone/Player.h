@@ -24,6 +24,7 @@ public:
 	bool Grab(const std::vector<std::string>& args);
 	bool Drop(const std::vector<std::string>& args);
 
+	bool Put(const std::vector<std::string>& args);
 	bool Use(const std::vector<std::string>& args);
 	
 	virtual void Tick();

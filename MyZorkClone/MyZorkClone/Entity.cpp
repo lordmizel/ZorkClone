@@ -30,11 +30,11 @@ void Entity::Look() const{
 
 
 void Entity::ChangeContainer(Entity* newContainer){
-	if (containedIn != NULL) 
+	if (containedIn != nullptr) 
 	{
 		containedIn->entitiesContained.remove(this);
 	}
-	if (newContainer != NULL) 
+	if (newContainer != nullptr) 
 	{
 		newContainer->entitiesContained.push_back(this);
 	}

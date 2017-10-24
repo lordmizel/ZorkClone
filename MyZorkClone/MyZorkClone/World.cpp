@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <time.h>
+#include "Globals.h"
 #include "Exit.h"
 #include "Item.h"
 #include "Npc.h"
@@ -43,7 +44,8 @@ World::World(){
 
 	// -- Items --
 	Item* key = new Item("KEY", "This key is decorated with a cute squid keychain.", backyard);
-	Item* bookCase = new Item("BOOKCASE", "This is just your typical run of the mill bookcase.", bedroom);
+	Item* bookCase = new Item("BOOKCASE", "This is just your typical run of the mill bookcase.", bedroom, true, false);
+	Item* bed = new Item("BED", "Your bed. It's undone, as per usual. The sheets have dragon drawings.", bedroom, false, false);
 	Item* book = new Item("BOOK", "It is called 'Tips and Tricks for the Rookie Monster Trainer'.", bookCase);
 	/*entities.push_back(key);
 	entities.push_back(bookCase);
@@ -106,83 +108,92 @@ World::~World(){
 
 
 void World::TakeAction(vector<string> &actions){
-	switch (actions.size()) 
-	{
-	case 0:
-		cout << "Please, introduce a command." << endl;
-		break;
-	case 1:
-		// One-word commands
-		if (actions[0] == "INVENTORY") 
+	if (!GAME_OVER) {
+		switch (actions.size())
 		{
-			player->Inventory();
-		} 
-		else if (actions[0] == "LOOK") 
-		{
-			player->Look(actions);
-		}
-		else 
-		{
-			cout << "I don't understand what " << actions[0] << " means. Is it one of those new trendy words kids use today?" << endl;
-		}
-		break;
-	case 2:
-		// Two-word commands
-		if (actions[0] == "LOOK" || actions[0] == "EXAMINE") 
-		{
-			player->Look(actions);
-		} 
-		else if (actions[0] == "GO") 
-		{
-			player->Go(actions);
-		} 
-		else if (actions[0] == "ATTACK") 
-		{
-			player->Attack(actions);
-		}
-		else if (actions[0] == "TALK" || actions[0] == "SPEAK")
-		{
-			player->Talk(actions);
-		}
-		else if (actions[0] == "GRAB" || actions[0] == "GET" || actions[0] == "TAKE") 
-		{
-			player->Grab(actions);
-		} 
-		else if (actions[0] == "DROP" || actions[0] == "DISCARD") 
-		{
-			player->Drop(actions);
-		} 
-		else if (actions[0] == "USE") 
-		{
+		case 0:
+			cout << "Please, introduce a command." << endl;
+			break;
+		case 1:
+			// One-word commands
+			if (actions[0] == "INVENTORY")
+			{
+				player->Inventory();
+			}
+			else if (actions[0] == "LOOK")
+			{
+				player->Look(actions);
+			}
+			else
+			{
+				cout << "I don't understand what " << actions[0] << " means. Is it one of those new trendy words kids use today?" << endl;
+			}
+			break;
+		case 2:
+			// Two-word commands
+			if (actions[0] == "LOOK" || actions[0] == "EXAMINE")
+			{
+				player->Look(actions);
+			}
+			else if (actions[0] == "GO")
+			{
+				player->Go(actions);
+			}
+			else if (actions[0] == "ATTACK")
+			{
+				player->Attack(actions);
+			}
+			else if (actions[0] == "TALK" || actions[0] == "SPEAK")
+			{
+				player->Talk(actions);
+			}
+			else if (actions[0] == "GRAB" || actions[0] == "GET" || actions[0] == "TAKE")
+			{
+				player->Grab(actions);
+			}
+			else if (actions[0] == "DROP" || actions[0] == "DISCARD")
+			{
+				player->Drop(actions);
+			}
+			else if (actions[0] == "USE")
+			{
 
-		}
-		else
-		{
-			cout << "I don't understand what " << actions[0] << " means. Is it one of those new trendy words kids use today?" << endl;
-		}
-		break;
-	case 3:
-		cout << "That makes no sense..." << endl;
-		break;
-	case 4:
-		//Four-word commands
-		if (actions[0] == "GRAB" || actions[0] == "GET" || actions[0] == "TAKE")
-		{
-			player->Grab(actions);
-		}
-		else if (actions[0] == "USE") 
-		{
+			}
+			else
+			{
+				cout << "I don't understand what " << actions[0] << " means. Is it one of those new trendy words kids use today?" << endl;
+			}
+			break;
+		case 3:
+			cout << "That makes no sense..." << endl;
+			break;
+		case 4:
+			//Four-word commands
+			if (actions[0] == "GRAB" || actions[0] == "GET" || actions[0] == "TAKE")
+			{
+				player->Grab(actions);
+			}
+			else if (actions[0] == "PUT" || actions[0] == "PLACE")
+			{
+				player->Put(actions);
+			}
+			else if (actions[0] == "USE")
+			{
 
-		} 
-		else 
-		{
-			cout << "I don't understand what " << actions[0] << " means. Is it one of those new trendy words kids use today?" << endl;
+			}
+			else
+			{
+				cout << "I don't understand what " << actions[0] << " means. Is it one of those new trendy words kids use today?" << endl;
+			}
+			break;
+		default:
+			cout << "What was that? I couldn't understand you, sorry." << endl;
+			break;
 		}
-		break;
-	default:
-		cout << "What was that? I couldn't understand you, sorry." << endl;
-		break;
+		cout << endl;
 	}
-	cout << endl;
+	else {
+		cout << "You can't do anything when you're dead. This is not a zombie game." << endl << "Type QUIT to end the game." << endl << endl;
+	}
 	return;
 }

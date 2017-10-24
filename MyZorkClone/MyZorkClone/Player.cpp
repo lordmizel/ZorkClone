@@ -1,4 +1,5 @@
 #include <iostream>
+#include "Globals.h"
 #include "Exit.h"
 #include "Item.h"
 #include "Monster.h"
@@ -20,6 +21,14 @@ Player::~Player()
 
 void Player::AssessHP() const
 {
+	if (currentHP <= 0) {
+		GAME_OVER = true;
+		cout << "You're too beat up to go on. Looks like your adventure ends here. :(" << endl;
+		cout << "=========" << "GAME OVER" << "=========" << endl << endl;
+		cout << "Type QUIT to exit game." << endl;
+		return;
+	}
+
 	if (currentHP == maxHP)
 	{
 		cout << "You're as healthy as you can be right now." << endl;
@@ -68,22 +77,17 @@ void Player::Look(const vector<string>& args) const
 			return;
 		}
 
-		for (list<Entity*>::const_iterator it = containedIn->entitiesContained.begin(); it != containedIn->entitiesContained.cend(); ++it)
+		//Is the entity in the room?
+		for (list<Entity*>::iterator it = containedIn->entitiesContained.begin(); it != containedIn->entitiesContained.cend(); ++it)
 		{
 			if ((*it)->name == args[1])
 			{
-				cout << "You see a " << (*it)->name << "." << endl;
 				(*it)->Look();
-
-				//Look for entities contained in item containers
-				if ((*it)->type == ITEM) {
-					for (list<Entity*>::const_iterator it2 = (*it)->entitiesContained.begin(); it2 != (*it)->entitiesContained.cend(); ++it2) {
-						(*it2)->Look();
-					}
-				}
 				return;
 			}
 		}
+
+		//Is the entity in the player's inventory?
 		for (list<Entity*>::const_iterator it = this->entitiesContained.begin(); it != this->entitiesContained.cend(); ++it)
 		{
 			if ((*it)->name == args[1])
@@ -93,6 +97,7 @@ void Player::Look(const vector<string>& args) const
 				return;
 			}
 		}
+
 		cout << "You don't see any " << args[1] << " around." << endl;
 	}
 	else
@@ -175,13 +180,18 @@ bool Player::Grab(const vector<string>& args)
 		Item* item = (Item*)containedIn->Find(args[1], ITEM);
 		if (item == nullptr)
 		{
-			cout << args[1] << " is not an item you can grab, you nincompoop!" << endl;
+			cout << "Where is this " << args[1] << " you're talking about?" << endl;
 		}
 		else
 		{
-			cout << "You grab the " << args[1] << "." << endl;
-			item->ChangeContainer(this);
-			return true;
+			if (item->grabbable) {
+				cout << "You grab the " << args[1] << "." << endl;
+				item->ChangeContainer(this);
+				return true;
+			}
+			else {
+				cout << "You can't just go around carrying that thing, you nincompoop!" << endl;
+			}
 		}
 	}
 	else if (args.size() == 4) {
@@ -198,8 +208,14 @@ bool Player::Grab(const vector<string>& args)
 				cout << "There's no " << args[1] << " in that " << args[3] << "." << endl;
 			}
 			else {
-				item->ChangeContainer(this);
-				return true;
+				if (item->grabbable) {
+					cout << "You grab the " << args[1] << "." << endl;
+					item->ChangeContainer(this);
+					return true;
+				}
+				else {
+					cout << "You can't just go around carrying that thing, you nincompoop!" << endl;
+				}
 			}
 		}
 	}
@@ -222,17 +238,52 @@ bool Player::Drop(const vector<string>& args)
 	return false;
 }
 
+bool Player::Put(const vector<string>& args)
+{
+	Entity* item = Find(args[1], ITEM);
+	if (item == nullptr) {
+		cout << "You're not carrying any " << args[1] << "." << endl;
+		return false;
+	}
+	for (list<Entity*>::iterator it = containedIn->entitiesContained.begin(); it != containedIn->entitiesContained.cend(); ++it)
+	{
+		if ((*it)->name == args[3]) {
+			cout << "You put the " << args[1] << " in the " << args[3] << "." << endl;
+			item->ChangeContainer(*it);
+			return true;
+		}
+	}
+	cout << "There's no " << args[3] << " to put the " << args[1] << " in." << endl;
+	return false;
+}
+
 bool Player::Use(const vector<string>& args)
 {
+	Entity* item = Find(args[1], ITEM);
+	if (item == nullptr) {
+		cout << "You're not carrying any " << args[1] << "." << endl;
+		return false;
+	}
+
+	if (args.size() == 2) {
+
+	}
+	else {
+		for (list<Entity*>::iterator it = containedIn->entitiesContained.begin(); it != containedIn->entitiesContained.cend(); ++it)
+		{
+			if ((*it)->name == args[3]) {
+				cout << "You put the " << args[1] << " in the " << args[3] << "." << endl;
+				item->ChangeContainer(*it);
+				return true;
+			}
+		}
+		cout << "There's no " << args[3] << " to use the " << args[1] << " with." << endl;
+	}
 	return false;
 }
 
 
 
 void Player::Tick()
-{
-}
-
-void Player::Die()
 {
 }
