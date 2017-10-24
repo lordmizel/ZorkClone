@@ -116,6 +116,7 @@
     <ClCompile Include="Exit.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="ItemUsage.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="MonsterCreator.cpp" />
@@ -131,6 +132,7 @@
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Exit.h" />
     <ClInclude Include="Globals.h" />
+    <ClInclude Include="ItemUsage.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="MonsterCreator.h" />

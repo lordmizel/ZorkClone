@@ -47,6 +47,12 @@ World::World(){
 	Item* bookCase = new Item("BOOKCASE", "This is just your typical run of the mill bookcase.", bedroom, true, false);
 	Item* bed = new Item("BED", "Your bed. It's undone, as per usual. The sheets have dragon drawings.", bedroom, false, false);
 	Item* book = new Item("BOOK", "It is called 'Tips and Tricks for the Rookie Monster Trainer'.", bookCase);
+	Item* tv = new Item("TV", "The TV is on, but you fear watching it for too long might have a negative impact on your neurones.", bedroom, false, false);
+	Item* machine = new Item("MACHINE", "It's a weird fantastical multi-colored machine from the future!", laboratory, false, false);
+	Item* aquarium = new Item("AQUARIUM", "There's a bunch of cephalopods swimming around in there.", laboratory, true, false);
+	Item* fruit = new Item("FRUIT", "It's a red, delicious-looking fruit. Looks juicy.", backyard);
+	Item* box = new Item("BOX", "This wooden crate is marked as Professor Stump's property, and is open.", warehouse, true, false);
+	Item* magazine = new Item("MAGAZINE", "There's a woman dressed as a bunny in the cover. Some Halloween costume catalog, probably.", box);
 	/*entities.push_back(key);
 	entities.push_back(bookCase);
 	entities.push_back(book);*/
@@ -87,8 +93,8 @@ World::World(){
 
 	// -- Monster --
 	srand(time(NULL));
-	Monster* capturableMonster = new Monster("", "", backyard);
-	Monster* larryMonster = new Monster("", "", townSquare);
+	Monster* capturableMonster = new Monster("", "", backyard, true);
+	Monster* larryMonster = new Monster("", "", townSquare, false);
 	/*entities.push_back(capturableMonster);
 	entities.push_back(larryMonster);*/
 }
@@ -157,7 +163,7 @@ void World::TakeAction(vector<string> &actions){
 			}
 			else if (actions[0] == "USE")
 			{
-
+				player->Use(actions);
 			}
 			else
 			{
@@ -179,7 +185,7 @@ void World::TakeAction(vector<string> &actions){
 			}
 			else if (actions[0] == "USE")
 			{
-
+				player->Use(actions);
 			}
 			else
 			{

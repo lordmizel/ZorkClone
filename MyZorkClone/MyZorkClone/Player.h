@@ -28,7 +28,6 @@ public:
 	bool Use(const std::vector<std::string>& args);
 	
 	virtual void Tick();
-	virtual void Die();
 private:
 };
 #endif

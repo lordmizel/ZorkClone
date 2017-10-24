@@ -6,6 +6,7 @@
 #include "Player.h"
 #include "Room.h"
 #include "NpcInteractions.h"
+#include "ItemUsage.h"
 
 using namespace std;
 
@@ -266,14 +267,13 @@ bool Player::Use(const vector<string>& args)
 	}
 
 	if (args.size() == 2) {
-
+		UseOneItem((Entity*)item, this);
 	}
 	else {
 		for (list<Entity*>::iterator it = containedIn->entitiesContained.begin(); it != containedIn->entitiesContained.cend(); ++it)
 		{
 			if ((*it)->name == args[3]) {
-				cout << "You put the " << args[1] << " in the " << args[3] << "." << endl;
-				item->ChangeContainer(*it);
+				UseTwoItems((Entity*)item, (*it), this);
 				return true;
 			}
 		}

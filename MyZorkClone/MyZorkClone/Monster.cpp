@@ -7,7 +7,7 @@
 using namespace std;
 
 
-Monster::Monster(string name, string description, Room * room) : Creature(name, description, room)
+Monster::Monster(string name, string description, Room * room, bool capturable) : Creature(name, description, room), capturable(capturable)
 {
 	type = MONSTER;
 	CreateMonster(name, description, description2);
