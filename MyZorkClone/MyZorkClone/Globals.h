@@ -16,7 +16,7 @@ extern Event CURRENT_EVENT;
 
 extern bool GAME_OVER;
 
-void ChangeEvent(Event newEvent);
+void ChangeEvent(Event &newEvent);
 
 std::string StringToUppercase(std::string &myString);
 std::vector<std::string> TokenizeString(std::string &str);

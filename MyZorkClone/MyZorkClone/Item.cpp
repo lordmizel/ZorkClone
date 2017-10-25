@@ -5,17 +5,17 @@
 using namespace std;
 
 
-Item::Item(const std::string name, const std::string description, Entity* containedIn) : Entity(name, description, (Entity*)containedIn)
+Item::Item(const std::string &name, const std::string &description, Entity* containedIn) : Entity(name, description, (Entity*)containedIn)
 {
 	type = ITEM;
 }
 
-Item::Item(const std::string name, const std::string description, Entity * containedIn, bool isContainer) : Entity(name, description, (Entity*)containedIn), isContainer(isContainer)
+Item::Item(const std::string &name, const std::string &description, Entity * containedIn, bool isContainer) : Entity(name, description, (Entity*)containedIn), isContainer(isContainer)
 {
 	type = ITEM;
 }
 
-Item::Item(const std::string name, const std::string description, Entity * containedIn, bool isContainer, bool grabbable) : Entity(name, description, (Entity*)containedIn), isContainer(isContainer), grabbable(grabbable)
+Item::Item(const std::string &name, const std::string &description, Entity * containedIn, bool isContainer, bool grabbable) : Entity(name, description, (Entity*)containedIn), isContainer(isContainer), grabbable(grabbable)
 {
 	type = ITEM;
 }
@@ -33,4 +33,14 @@ void Item::Look() const
 			cout << "There's a " << (*it)->GetName() << " in the " << name << "." << endl;
 		}
 	}
+}
+
+bool Item::IsContainer() const
+{
+	return isContainer;
+}
+
+bool Item::IsGrabbable() const
+{
+	return grabbable;
 }

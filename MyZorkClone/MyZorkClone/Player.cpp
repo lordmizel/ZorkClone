@@ -186,7 +186,7 @@ bool Player::Grab(const vector<string>& args)
 		}
 		else
 		{
-			if (item->grabbable) {
+			if (item->IsGrabbable()) {
 				cout << "You grab the " << args[1] << "." << endl;
 				item->ChangeContainer(this);
 				return true;
@@ -210,7 +210,7 @@ bool Player::Grab(const vector<string>& args)
 				cout << "There's no " << args[1] << " in that " << args[3] << "." << endl;
 			}
 			else {
-				if (item->grabbable) {
+				if (item->IsGrabbable()) {
 					cout << "You grab the " << args[1] << "." << endl;
 					item->ChangeContainer(this);
 					return true;
@@ -230,6 +230,9 @@ bool Player::Drop(const vector<string>& args)
 	if (item == nullptr)
 	{
 		cout << "You don't have any " << args[1] << "." << endl;
+	}
+	else if (args[1] == "CAPSULE") {
+		cout << "A true Zorkemon master will never drop his capsules!" << endl;
 	}
 	else
 	{
