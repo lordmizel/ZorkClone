@@ -143,9 +143,9 @@ void TalkNPC(string name, Player * player)
 				 << "you for your troubles!- She stumbles and almost trips on her way to the exit." << endl;
 			Entity* prof = player->ContainedIn()->Find("PROFESSOR", NPC);
 			Exit* toTown = (Exit*)prof->ContainedIn()->Find("DOOR", EXIT);
-			Room* town = toTown->destination;
+			Room* town = toTown->GetDestination();
 			Exit* toLab = (Exit*)town->Find("LABORATORY", EXIT);
-			Room* lab = toLab->destination;
+			Room* lab = toLab->GetDestination();
 			prof->ChangeContainer(lab);
 			CURRENT_EVENT = PROFESSOR_FOUND;
 			break;

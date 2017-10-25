@@ -92,21 +92,3 @@ typeOfEntity Entity::GetType() const
 {
 	return type;
 }
-
-//std::list<Entity*> Entity::GetEntitiesContined() const
-//{
-//	return entitiesContained;
-//}
-
-//Entity * Entity::Find(typeOfEntity type) const
-//{
-//	for (list<Entity*>::const_iterator it = entitiesContained.begin(); it != entitiesContained.cend(); ++it)
-//	{
-//		if ((*it)->type == type)
-//			return *it;
-//	}
-//
-//	return nullptr;
-//}
-
-//TODO: Entity finders

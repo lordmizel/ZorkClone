@@ -68,7 +68,7 @@ Exit * Room::GetExit(const std::string name)
 		if ((*it)->GetType() == EXIT)
 		{
 			Exit* exit = (Exit*)*it;
-			if (exit->GetName() == name || exit->alternateName == name)
+			if (exit->GetName() == name || exit->GetAlternateName() == name)
 			{
 				return exit;
 			}

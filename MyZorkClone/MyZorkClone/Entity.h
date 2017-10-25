@@ -32,7 +32,6 @@ public:
 	std::string GetDescription() const;
 	Entity* ContainedIn() const;
 	typeOfEntity GetType() const;
-	/*std::list<Entity*> GetEntitiesContined() const;*/
 
 protected:
 	std::string name = "";

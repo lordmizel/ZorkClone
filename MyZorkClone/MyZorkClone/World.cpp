@@ -70,7 +70,7 @@ World::World(){
 	Exit* labToSquare = new Exit("DOOR", "TOWN", "The door behind you goes straight back to town.", laboratory, townSquare);
 	Exit* squareToBackyard = new Exit("PATH", "BACKYARD", "A messy path of thistles and nettles goes to Professor Stump's backyard.", townSquare, backyard);
 	Exit* backyardToSquare = new Exit("PATH", "TOWN", "The grassy path behind you would probably take you back to civilization.", backyard, townSquare);
-	Exit* squareToWarehouse = new Exit("WAREHOUSE", "WAREHOUSE", "There's an old warehouse nearby, with a shaky-looking door.", townSquare, warehouse, false, key); //////////////////
+	Exit* squareToWarehouse = new Exit("WAREHOUSE", "WAREHOUSE", "There's an old warehouse nearby, with a shaky-looking door.", townSquare, warehouse, true, key);
 	Exit* warehouseToSquare = new Exit("DOOR", "TOWN", "You can always take the door back to the town square.", warehouse, townSquare);
 	/*entities.push_back(bedroomToHouse);
 	entities.push_back(houseToBedroom);

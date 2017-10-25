@@ -119,13 +119,13 @@ bool Player::Go(const vector<string>& args)
 		cout << "That's not a place you can GO to." << endl;
 		return false;
 	}
-	if (exit->locked == true)
+	if (exit->IsLocked() == true)
 	{
 		if (Find("KEY", ITEM)) {
 			cout << "You used the key to open the door." << endl;
-			ChangeContainer(exit->destination);
+			ChangeContainer(exit->GetDestination());
 			containedIn->Look();
-			exit->locked = false;
+			exit->LockState(false);
 			//TODO : Mirar de implementar un unlock
 		}
 		else {
@@ -135,7 +135,7 @@ bool Player::Go(const vector<string>& args)
 	}
 	else {
 
-		ChangeContainer(exit->destination);
+		ChangeContainer(exit->GetDestination());
 		containedIn->Look();
 		return true;
 	}
