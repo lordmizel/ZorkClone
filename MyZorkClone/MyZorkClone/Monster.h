@@ -13,6 +13,7 @@ public:
 	~Monster();
 
 	void Look() const;
+	void AssessHP() const;
 
 	std::string description2;
 	bool capturable = true;

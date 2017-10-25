@@ -30,7 +30,7 @@ public:
 
 	void FindAll(typeOfEntity type, std::list<Entity*>& listOfStuff) const;
 	Entity* Find(const std::string& name, typeOfEntity type) const;
-	//Entity* Find(typeOfEntity type) const;
+	Entity* Find(typeOfEntity type) const;
 private:
 
 };

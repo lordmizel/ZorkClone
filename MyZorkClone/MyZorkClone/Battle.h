@@ -2,17 +2,28 @@
 #define __Battle__
 
 #include <iostream>
-#include <vector>
-#include "Entity.h"
 
-static bool IN_BATTLE = false;
-static Entity* YOUR_MONSTER = nullptr;
-static Entity* ENEMY_MONSTER = nullptr;
+class Monster;
+class Player;
+class Npc;
 
-std::vector<std::string> battleStance;
-std::string enemyStance;
+extern bool IN_BATTLE;
 
-std::string EnemyChangeStance();
+//Monster* YOUR_MONSTER;
+//Monster* ENEMY_MONSTER;
+//Player* YOU;
+//Npc* RIVAL;
+
+enum BattleStance {
+	STRONG,
+	FAST,
+	SNEAKY
+};
+
+//BattleStance enemyStance;
+
+void BattleStart(Monster* playerMonster, Monster* enemyMonster, Player* player, Npc* npc);
+void EnemyChangeStance();
 void SolveMatch(std::string &stanceChosen);
 
 #endif

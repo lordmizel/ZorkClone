@@ -2,7 +2,9 @@
 #define __ItemUsage__
 
 #include "Entity.h"
-#include "Player.h"
+
+class Entity;
+class Player;
 
 void UseOneItem(Entity* item, Player* player);
 void UseTwoItems(Entity* item1, Entity* item2, Player* player);

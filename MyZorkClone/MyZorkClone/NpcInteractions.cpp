@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "Item.h"
 #include "Globals.h"
+#include "Battle.h"
 
 using namespace std;
 
@@ -112,11 +113,16 @@ void TalkNPC(string name, Player * player)
 				 << "not accusing me, are you? The professor is kinda amusing, even by commoner standards. What's the point " << endl
 				 << "of an entertainer if you're going to keep her locked up?" << endl;
 			break;
-		case GOT_MONSTER:
+		case GOT_MONSTER: {
 			cout << "-You have a monster? You?- He looks actually surprised. -I must admit I didn't expect for a low-born " << endl
-				 << "such as yourself to actually have one. I do train monsters as well, see? Naturally, my list of " << endl
-				 << "achievements is just as large as the number of digits in my bank account. Allow me to show you..." << endl;
+				<< "such as yourself to actually have one. I do train monsters as well, see? Naturally, my list of " << endl
+				<< "achievements is just as large as the number of digits in my bank account. Allow me to show you..." << endl;
+			Entity* larrysMonster = player->containedIn->Find(MONSTER);
+			Entity* yourMonster = player->Find("CAPSULE", ITEM)->Find(MONSTER);
+			Entity* larry = player->containedIn->Find("LARRY", NPC);
+			BattleStart((Monster*)yourMonster, (Monster*)larrysMonster, player, (Npc*)larry);
 			break;
+		}
 		case BEAT_LARRY:
 			cout << "He throws his arms up dramatically. -Haven't you humiliated me enough? Alas, poor you, you might have " << endl
 				<< "defeated me in a monster battle, but that means nothing. The only reality is that I'm still obscenely " << endl
@@ -149,6 +155,7 @@ void TalkNPC(string name, Player * player)
 					 << "monster will escape. Just like the squid doesn't let go of their prey. I'm hungry now.- Just like that, she goes" << endl
 					 << "back yo her work." << endl;
 				Item* capsule = new Item("CAPSULE", "This is an experimental capsule designed to capture monsters.", player);
+				capsuleGiven = true;
 			}
 			else {
 				cout << "The professor is eating a fried squid ring sandwich." << endl;

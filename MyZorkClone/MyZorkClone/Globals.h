@@ -12,9 +12,11 @@ enum Event {
 	BEAT_LARRY
 };
 
-static Event CURRENT_EVENT = START;
+extern Event CURRENT_EVENT;
 
-static bool GAME_OVER = false;
+extern bool GAME_OVER;
+
+void ChangeEvent(Event newEvent);
 
 std::string StringToUppercase(std::string &myString);
 std::vector<std::string> TokenizeString(std::string &str);

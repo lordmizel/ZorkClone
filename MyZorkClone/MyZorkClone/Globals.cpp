@@ -3,6 +3,13 @@
 
 using namespace std;
 
+Event CURRENT_EVENT = START;
+bool GAME_OVER = false;
+
+void ChangeEvent(Event newEvent)
+{
+	CURRENT_EVENT = newEvent;
+}
 
 string StringToUppercase(string & myString)
 {

@@ -23,20 +23,20 @@ vector<string> typeOfAnimal = {
 };
 
 vector<string> secondPartOfName = {
-	"quack",
-	"hound",
-	"meow",
-	"ursus",
-	"sushi",
-	"hopper",
-	"caw",
-	"pluck",
-	"squeak",
-	"dropbear",
-	"slither",
-	"antula",
-	"oink",
-	"essia"
+	"QUACK",
+	"HOUND",
+	"MEOW",
+	"URSUS",
+	"SUSHI",
+	"HOPPER",
+	"CAW",
+	"PLUCK",
+	"SQUEAK",
+	"DROPBEAR",
+	"SLITHER",
+	"ANTULA",
+	"OINK",
+	"ESSIA"
 };
 
 vector<string> specialPower = {
@@ -56,19 +56,19 @@ vector<string> specialPower = {
 };
 
 vector<string> firstPartOfName = {
-	"pyr",
-	"plasm",
-	"seism",
-	"elec",
-	"aer",
-	"crane",
-	"glutt",
-	"psycho",
-	"aqu",
-	"blink",
-	"venom",
-	"aud",
-	"crissant"
+	"PYRO",
+	"PLASM",
+	"SEISM",
+	"ELEC",
+	"AER",
+	"SKULL",
+	"GLUTT",
+	"PSYCHO",
+	"AQUA",
+	"BLINK",
+	"VENOM",
+	"AUDI",
+	"CRISSANT"
 };
 
 vector<string> extraFeature = {

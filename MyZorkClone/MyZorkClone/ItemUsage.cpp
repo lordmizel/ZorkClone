@@ -1,7 +1,12 @@
 #include <iostream>
+#include <string>
 #include "ItemUsage.h"
+#include "Entity.h"
 #include "Monster.h"
 #include "Globals.h"
+#include "Player.h"
+#include "NpcInteractions.h"
+
 
 using namespace std;
 
@@ -51,8 +56,8 @@ void UseTwoItems(Entity * item1, Entity * item2, Player* player)
 			Monster* monster = (Monster*)item2;
 			if (monster->capturable == true) {
 				monster->ChangeContainer(item1);
-				cout << "You caught the " << monster->name << "!! Your first step in order to become a true Zorkemon master!!" << endl;
 				CURRENT_EVENT = GOT_MONSTER;
+				cout << "You caught the " << monster->name << "!! Your first step in order to become a true Zorkemon master!!" << endl;
 			}
 			else {
 				cout << "That monster already has an owner! You can't steal monsters who pertain to other people!" << endl;
