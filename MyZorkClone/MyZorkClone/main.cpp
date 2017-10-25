@@ -38,7 +38,7 @@ int main() {
 				}
 				else
 				{
-					cout << "Ejecutando: " << action << endl;
+					cout << endl;
 					vector<string> actionCommands = TokenizeString(StringToUppercase(action));
 					gameWorld.TakeAction(actionCommands);
 					action = "";

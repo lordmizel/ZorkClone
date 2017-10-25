@@ -23,7 +23,7 @@ public:
 	typeOfEntity type;
 	std::list<Entity*> entitiesContained;
 
-	Entity(const std::string name, const std::string description, Entity* containedIn);
+	Entity(const std::string &name, const std::string &description, Entity* containedIn);
 	virtual ~Entity();
 	virtual void Look() const;
 	void ChangeContainer(Entity* newContainer);

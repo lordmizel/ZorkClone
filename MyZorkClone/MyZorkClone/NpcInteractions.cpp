@@ -33,7 +33,7 @@ void AttackNPC(string name, Player* player)
 			 << "little old me, but unfortunately for you I foresaw this in advance!" << endl;
 		cout << "That's when you notice the Professor has a force field protecting her body. This " << endl
 			 << "feels strangely unfair, for some reason." << endl;
-		player->currentHP -= 1;
+		player->Hurt();
 		player->AssessHP();
 	}
 }
@@ -41,13 +41,15 @@ void AttackNPC(string name, Player* player)
 void TalkNPC(string name, Player * player)
 {
 	if (name == "MOTHER") {
-		if (player->currentHP < player->maxHP) {
+		if (player->GetCurrentHP() < player->GetMaxHP()) {
 			cout << "Your mother raises an eyebrow when she sees you. -Geez, how do you always manage to get yourself into " << endl
 				 << "so much trouble?- She then offers you a piece of cake." << endl;
 			cout << "As you eat, you feel your wounds healing themselves." << endl;
 			cout << "-Yeah, I still don't understand how you do that. Healing just by eating cake, I mean. You're a weird " << endl
 				 << "one." << endl;
-			player->currentHP = player->maxHP;
+			int newPlayerHP = player->GetMaxHP();
+			player->SetCurrentHP(newPlayerHP);
+			/*player->currentHP = player->maxHP;*/
 			player->AssessHP();
 		} 
 		else

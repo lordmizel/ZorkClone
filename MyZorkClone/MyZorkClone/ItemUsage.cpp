@@ -32,14 +32,14 @@ void UseOneItem(Entity * item, Player* player)
 		cout << "You start reading the magazine and..." << endl << "... oh..." << endl << "... OH... OH, MY..." << endl;
 		cout << "You probably shouldn't be looking at these pages..." << endl;
 		cout << "You actually got hurt because of nosebleed hemorrage." << endl;
-		player->currentHP--;
+		player->Hurt();
 		player->AssessHP();
 	}
 	else if (name == "FRUIT") {
 		cout << "You take a bite out of the juicy fruit." << endl;
 		cout << "It turns out to be poisonous. OF COURSE IT IS. WHAT DID YOU EXPECT??" << endl;
 		cout << "You're hurt because of bellyache." << endl;
-		player->currentHP--;
+		player->Hurt();
 		player->AssessHP();
 		item->ChangeContainer(nullptr);
 	}

@@ -5,7 +5,7 @@
 using namespace std;
 
 
-Entity::Entity(const string name, const string description, Entity* containedIn = nullptr) : name(name), description(description), containedIn(containedIn) {
+Entity::Entity(const string &name, const string &description, Entity* containedIn = nullptr) : name(name), description(description), containedIn(containedIn) {
 	type = ENTITY;
 	if (containedIn != nullptr) {
 		containedIn->entitiesContained.push_back(this);
