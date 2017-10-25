@@ -2,8 +2,8 @@
 #include <time.h>
 #include "MonsterCreator.h"
 
-
 using namespace std;
+
 
 vector<string> typeOfAnimal = { 
 	"duck", 

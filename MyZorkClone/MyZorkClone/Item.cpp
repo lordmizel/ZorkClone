@@ -4,6 +4,7 @@
 
 using namespace std;
 
+
 Item::Item(const std::string name, const std::string description, Entity* containedIn) : Entity(name, description, (Entity*)containedIn)
 {
 	type = ITEM;
@@ -29,7 +30,7 @@ void Item::Look() const
 
 	if (isContainer == true) {
 		for (list<Entity*>::const_iterator it = this->entitiesContained.begin(); it != this->entitiesContained.cend(); ++it) {
-			cout << "There's a " << (*it)->name << " in the " << name << "." << endl;
+			cout << "There's a " << (*it)->GetName() << " in the " << name << "." << endl;
 		}
 	}
 }

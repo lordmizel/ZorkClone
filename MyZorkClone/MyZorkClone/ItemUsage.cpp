@@ -7,12 +7,12 @@
 #include "Player.h"
 #include "NpcInteractions.h"
 
-
 using namespace std;
+
 
 void UseOneItem(Entity * item, Player* player)
 {
-	string name = item->name;
+	string name = item->GetName();
 	if (name == "BOOK") {
 		cout << "You start reading the book:" << endl;
 		cout << "A monster can attack it's adversaries in a variety of ways. Bust there's basically three cathegories of " << endl
@@ -50,21 +50,21 @@ void UseOneItem(Entity * item, Player* player)
 
 void UseTwoItems(Entity * item1, Entity * item2, Player* player)
 {
-	string name1 = item1->name;
+	string name1 = item1->GetName();
 	if (name1 == "CAPSULE") {
-		if (item2->type == MONSTER) {
+		if (item2->GetType() == MONSTER) {
 			Monster* monster = (Monster*)item2;
 			if (monster->capturable == true) {
 				monster->ChangeContainer(item1);
 				CURRENT_EVENT = GOT_MONSTER;
-				cout << "You caught the " << monster->name << "!! Your first step in order to become a true Zorkemon master!!" << endl;
+				cout << "You caught the " << monster->GetName() << "!! Your first step in order to become a true Zorkemon master!!" << endl;
 			}
 			else {
 				cout << "That monster already has an owner! You can't steal monsters who pertain to other people!" << endl;
 			}
 		}
 		else {
-			cout << "The capsule is used to capture monsters. That " << item2->name << " is not a monster." << endl;
+			cout << "The capsule is used to capture monsters. That " << item2->GetName() << " is not a monster." << endl;
 		}
 	}
 	else if (name1 == "KEY"){

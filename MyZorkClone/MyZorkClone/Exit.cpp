@@ -6,8 +6,6 @@
 using namespace std;
 
 
-
-
 Exit::Exit(const string name, const string alternateName, const string description, Room* room, Room* destination) : Entity(name, description, (Entity*)room), alternateName(alternateName), destination(destination)
 {
 	type = EXIT;

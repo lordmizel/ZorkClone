@@ -3,6 +3,7 @@
 
 using namespace std;
 
+
 Event CURRENT_EVENT = START;
 bool GAME_OVER = false;
 

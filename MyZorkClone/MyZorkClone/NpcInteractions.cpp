@@ -8,6 +8,7 @@
 
 using namespace std;
 
+
 bool checkGiven = false;
 bool capsuleGiven = false;
 
@@ -119,9 +120,9 @@ void TalkNPC(string name, Player * player)
 			cout << "-You have a monster? You?- He looks actually surprised. -I must admit I didn't expect for a low-born " << endl
 				<< "such as yourself to actually have one. I do train monsters as well, see? Naturally, my list of " << endl
 				<< "achievements is just as large as the number of digits in my bank account. Allow me to show you..." << endl;
-			Entity* larrysMonster = player->containedIn->Find(MONSTER);
+			Entity* larrysMonster = player->ContainedIn()->Find(MONSTER);
 			Entity* yourMonster = player->Find("CAPSULE", ITEM)->Find(MONSTER);
-			Entity* larry = player->containedIn->Find("LARRY", NPC);
+			Entity* larry = player->ContainedIn()->Find("LARRY", NPC);
 			BattleStart((Monster*)yourMonster, (Monster*)larrysMonster, player, (Npc*)larry);
 			break;
 		}
@@ -140,8 +141,8 @@ void TalkNPC(string name, Player * player)
 				 << "me inside when I was busy looking for some pieces to tinker around..." << endl;
 			cout << "She adjusts her glasses and looks around. -I know! Come and see me at the lab. I might have something to give " << endl
 				 << "you for your troubles!- She stumbles and almost trips on her way to the exit." << endl;
-			Entity* prof = player->containedIn->Find("PROFESSOR", NPC);
-			Exit* toTown = (Exit*)prof->containedIn->Find("DOOR", EXIT);
+			Entity* prof = player->ContainedIn()->Find("PROFESSOR", NPC);
+			Exit* toTown = (Exit*)prof->ContainedIn()->Find("DOOR", EXIT);
 			Room* town = toTown->destination;
 			Exit* toLab = (Exit*)town->Find("LABORATORY", EXIT);
 			Room* lab = toLab->destination;

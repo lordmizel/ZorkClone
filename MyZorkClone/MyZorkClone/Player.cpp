@@ -10,6 +10,7 @@
 
 using namespace std;
 
+
 Player::Player(const string name, const string description, Room * room) : Creature(name, description, room) {
 	type = PLAYER;
 	maxHP = 3;
@@ -60,7 +61,7 @@ void Player::Inventory() const
 
 	for (list<Entity*>::const_iterator it = items.begin(); it != items.cend(); ++it)
 	{
-		cout << "You have a " << (*it)->name << "." << endl;
+		cout << "You have a " << (*it)->GetName() << "." << endl;
 	}
 
 	cout << endl;
@@ -81,7 +82,7 @@ void Player::Look(const vector<string>& args) const
 		//Is the entity in the room?
 		for (list<Entity*>::iterator it = containedIn->entitiesContained.begin(); it != containedIn->entitiesContained.cend(); ++it)
 		{
-			if ((*it)->name == args[1])
+			if ((*it)->GetName() == args[1])
 			{
 				(*it)->Look();
 				return;
@@ -91,9 +92,9 @@ void Player::Look(const vector<string>& args) const
 		//Is the entity in the player's inventory?
 		for (list<Entity*>::const_iterator it = this->entitiesContained.begin(); it != this->entitiesContained.cend(); ++it)
 		{
-			if ((*it)->name == args[1])
+			if ((*it)->GetName() == args[1])
 			{
-				cout << "You have a " << (*it)->name << " in your inventory." << endl;
+				cout << "You have a " << (*it)->GetName() << " in your inventory." << endl;
 				(*it)->Look();
 				return;
 			}
@@ -248,7 +249,7 @@ bool Player::Put(const vector<string>& args)
 	}
 	for (list<Entity*>::iterator it = containedIn->entitiesContained.begin(); it != containedIn->entitiesContained.cend(); ++it)
 	{
-		if ((*it)->name == args[3]) {
+		if ((*it)->GetName() == args[3]) {
 			cout << "You put the " << args[1] << " in the " << args[3] << "." << endl;
 			item->ChangeContainer(*it);
 			return true;
@@ -272,7 +273,7 @@ bool Player::Use(const vector<string>& args)
 	else {
 		for (list<Entity*>::iterator it = containedIn->entitiesContained.begin(); it != containedIn->entitiesContained.cend(); ++it)
 		{
-			if ((*it)->name == args[3]) {
+			if ((*it)->GetName() == args[3]) {
 				UseTwoItems((Entity*)item, (*it), this);
 				return true;
 			}
@@ -281,8 +282,6 @@ bool Player::Use(const vector<string>& args)
 	}
 	return false;
 }
-
-
 
 void Player::Tick()
 {

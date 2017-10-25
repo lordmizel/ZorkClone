@@ -105,7 +105,6 @@ World::World(){
 	entities.push_back(larryMonster);*/
 }
 
-
 World::~World(){
 	for (list<Entity*>::reverse_iterator it = entities.rbegin(); it != entities.rend(); ++it) {
 		if (*it != nullptr) {
@@ -117,7 +116,6 @@ World::~World(){
 
 	entities.clear();
 }
-
 
 void World::TakeAction(vector<string> &actions){
 	if (!GAME_OVER) {

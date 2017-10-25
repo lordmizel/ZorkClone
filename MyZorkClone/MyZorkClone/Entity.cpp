@@ -12,7 +12,6 @@ Entity::Entity(const string &name, const string &description, Entity* containedI
 	}
 }
 
-
 Entity::~Entity(){
 	for (list<Entity*>::reverse_iterator it = entitiesContained.rbegin(); it != entitiesContained.rend(); ++it)
 	{
@@ -23,11 +22,9 @@ Entity::~Entity(){
 	}
 }
 
-
 void Entity::Look() const{
 	cout << description << endl;
 }
-
 
 void Entity::ChangeContainer(Entity* newContainer){
 	if (containedIn != nullptr) 
@@ -75,6 +72,31 @@ Entity * Entity::Find(typeOfEntity type) const
 	}
 	return nullptr;
 }
+
+std::string Entity::GetName() const
+{
+	return name;
+}
+
+std::string Entity::GetDescription() const
+{
+	return description;
+}
+
+Entity * Entity::ContainedIn() const
+{
+	return containedIn;
+}
+
+typeOfEntity Entity::GetType() const
+{
+	return type;
+}
+
+//std::list<Entity*> Entity::GetEntitiesContined() const
+//{
+//	return entitiesContained;
+//}
 
 //Entity * Entity::Find(typeOfEntity type) const
 //{

@@ -17,21 +17,28 @@ enum typeOfEntity {
 
 class Entity {
 public:
-	std::string name = "";
-	std::string description = "";
-	Entity *containedIn = nullptr;
-	typeOfEntity type;
 	std::list<Entity*> entitiesContained;
 
 	Entity(const std::string &name, const std::string &description, Entity* containedIn);
 	virtual ~Entity();
+
 	virtual void Look() const;
 	void ChangeContainer(Entity* newContainer);
-
 	void FindAll(typeOfEntity type, std::list<Entity*>& listOfStuff) const;
 	Entity* Find(const std::string& name, typeOfEntity type) const;
 	Entity* Find(typeOfEntity type) const;
-private:
 
+	std::string GetName() const;
+	std::string GetDescription() const;
+	Entity* ContainedIn() const;
+	typeOfEntity GetType() const;
+	/*std::list<Entity*> GetEntitiesContined() const;*/
+
+protected:
+	std::string name = "";
+	std::string description = "";
+	Entity *containedIn = nullptr;
+	typeOfEntity type;
+	
 };
 #endif

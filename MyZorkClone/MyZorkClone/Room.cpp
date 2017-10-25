@@ -5,8 +5,8 @@
 #include "Item.h"
 #include "Npc.h"
 
-
 using namespace std;
+
 
 Room::Room(const string name, const string description) : Entity(name, description, nullptr)
 {
@@ -23,40 +23,40 @@ void Room::Look() const
 	//Describe exits
 	for (list<Entity*>::const_iterator it = entitiesContained.begin(); it != entitiesContained.cend(); ++it)
 	{
-		if ((*it)->type == EXIT)
+		if ((*it)->GetType() == EXIT)
 		{
 			Exit* exit = (Exit*)*it;
-			cout << exit->description << endl;
+			cout << exit->GetDescription() << endl;
 		}
 	}
 
 	//Describe items
 	for (list<Entity*>::const_iterator it = entitiesContained.begin(); it != entitiesContained.cend(); ++it)
 	{
-		if ((*it)->type == ITEM)
+		if ((*it)->GetType() == ITEM)
 		{
 			Item* item = (Item*)*it;
-			cout << "You see a " << item->name << "." << endl;
+			cout << "You see a " << item->GetName() << "." << endl;
 		}
 	}
 
 	//Describe NPCs
 	for (list<Entity*>::const_iterator it = entitiesContained.begin(); it != entitiesContained.cend(); ++it)
 	{
-		if ((*it)->type == NPC)
+		if ((*it)->GetType() == NPC)
 		{
 			Npc* npc = (Npc*)*it;
-			cout << "You see " << npc->name << " standing around." << endl;
+			cout << "You see " << npc->GetName() << " standing around." << endl;
 		}
 	}
 
 	//Describe monsters
 	for (list<Entity*>::const_iterator it = entitiesContained.begin(); it != entitiesContained.cend(); ++it)
 	{
-		if ((*it)->type == MONSTER)
+		if ((*it)->GetType() == MONSTER)
 		{
 			Monster* monster = (Monster*)*it;
-			cout << "WATCH OUT! You see a " << monster->name << " lurking nearby!" << endl;
+			cout << "You see a " << monster->GetName() << " lurking nearby!" << endl;
 		}
 	}
 }
@@ -65,10 +65,10 @@ Exit * Room::GetExit(const std::string name)
 {
 	for (list<Entity*>::const_iterator it = entitiesContained.begin(); it != entitiesContained.cend(); ++it)
 	{
-		if ((*it)->type == EXIT)
+		if ((*it)->GetType() == EXIT)
 		{
 			Exit* exit = (Exit*)*it;
-			if (exit->name == name || exit->alternateName == name)
+			if (exit->GetName() == name || exit->alternateName == name)
 			{
 				return exit;
 			}
