@@ -46,3 +46,8 @@ void Monster::AssessHP() const
 		cout << name << " looks like is about to faint!" << endl;
 	}
 }
+
+bool Monster::IsCapturable() const
+{
+	return capturable;
+}

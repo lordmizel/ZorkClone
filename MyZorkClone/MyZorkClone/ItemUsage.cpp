@@ -54,7 +54,7 @@ void UseTwoItems(Entity * item1, Entity * item2, Player* player)
 	if (name1 == "CAPSULE") {
 		if (item2->GetType() == MONSTER) {
 			Monster* monster = (Monster*)item2;
-			if (monster->capturable == true) {
+			if (monster->IsCapturable() == true) {
 				monster->ChangeContainer(item1);
 				CURRENT_EVENT = GOT_MONSTER;
 				cout << "You caught the " << monster->GetName() << "!! Your first step in order to become a true Zorkemon master!!" << endl;
