@@ -103,11 +103,13 @@ void SolveMatch(string & stanceChosen)
 
 	if (ENEMY_MONSTER->currentHP <= 0) {
 		cout << "YOU WIN!!" << endl;
+		
 	}
-	if (YOUR_MONSTER->currentHP <= 0) {
+	else if (YOUR_MONSTER->currentHP <= 0) {
 		cout << "YOU LOSE!!" << endl;
 	}
-
-	EnemyChangeStance();
-	cout << "Please choose the type of attack you want to do: Write STRONG, FAST or SNEAKY." << endl << endl;
+	else {
+		EnemyChangeStance();
+		cout << "Please choose the type of attack you want to do: Write STRONG, FAST or SNEAKY." << endl << endl;
+	}
 }
