@@ -224,7 +224,7 @@ bool Player::Grab(const vector<string>& args)
 	return false;
 }
 
-bool Player::Drop(const vector<string>& args)
+bool Player::Drop(const vector<string>& args) const
 {
 	Item* item = (Item*)Find(args[1], ITEM);
 	if (item == nullptr)
@@ -243,7 +243,7 @@ bool Player::Drop(const vector<string>& args)
 	return false;
 }
 
-bool Player::Put(const vector<string>& args)
+bool Player::Put(const vector<string>& args) const
 {
 	Entity* item = Find(args[1], ITEM);
 	if (item == nullptr) {

@@ -12,7 +12,7 @@ using namespace std;
 bool checkGiven = false;
 bool capsuleGiven = false;
 
-void AttackNPC(string name, Player* player)
+void AttackNPC(const string &name, Player* player)
 {
 	if (name == "MOTHER") {
 		cout << "Just before you can act, your mother sends one of her trademarked icy stares at you." << endl;
@@ -39,7 +39,7 @@ void AttackNPC(string name, Player* player)
 	}
 }
 
-void TalkNPC(string name, Player * player)
+void TalkNPC(const string &name, Player * player)
 {
 	if (name == "MOTHER") {
 		if (player->GetCurrentHP() < player->GetMaxHP()) {

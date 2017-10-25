@@ -17,14 +17,12 @@ public:
 
 	void Inventory() const;
 	void Look(const std::vector<std::string>& args) const;
-
 	bool Go(const std::vector<std::string>& args);
 	bool Attack(const std::vector<std::string>& args);
 	bool Talk(const std::vector<std::string>& args);
 	bool Grab(const std::vector<std::string>& args);
-	bool Drop(const std::vector<std::string>& args);
-
-	bool Put(const std::vector<std::string>& args);
+	bool Drop(const std::vector<std::string>& args) const;
+	bool Put(const std::vector<std::string>& args) const;
 	bool Use(const std::vector<std::string>& args);
 	
 	virtual void Tick();
