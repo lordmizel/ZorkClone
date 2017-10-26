@@ -1,5 +1,4 @@
 #include <cstdlib>
-#include <time.h>
 #include "MonsterCreator.h"
 
 using namespace std;

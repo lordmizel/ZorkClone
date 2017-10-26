@@ -98,7 +98,8 @@ void TalkNPC(const string &name, Player * player)
 				cout << "-Allow me to help. You need to go to the bank in order to retrieve the money. Yeah, the bank, " << endl
 					 << "you know, that place where people with money bring the money to keep it safe. I'm sure you've " << endl
 					 << "heard of it, though I suppose plebs like you are not too accustomed to visit it." << endl;
-				Item* check = new Item("CHECK", "This check is worth 100 dollars. Make sure to exchange it next time you go to the bank.", player);
+				player->ContainedIn()->Find("LARRY", NPC)->Find("CHECK", ITEM)->ChangeContainer(player);
+				//Item* check = new Item("CHECK", "This check is worth 100 dollars. Make sure to exchange it next time you go to the bank.", player);
 				checkGiven = true;
 			}
 			else 
@@ -157,7 +158,8 @@ void TalkNPC(const string &name, Player * player)
 				cout << "-Just use it on a monster and you will capture it! Since it's a special capsule made by me, there's no way the " << endl
 					 << "monster will escape. Just like the squid doesn't let go of their prey. I'm hungry now.- Just like that, she goes" << endl
 					 << "back yo her work." << endl;
-				Item* capsule = new Item("CAPSULE", "This is an experimental capsule designed to capture monsters.", player);
+				player->ContainedIn()->Find("PROFESSOR", NPC)->Find("CAPSULE", ITEM)->ChangeContainer(player);
+				
 				capsuleGiven = true;
 			}
 			else {

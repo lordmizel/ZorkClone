@@ -13,13 +13,6 @@ Entity::Entity(const string &name, const string &description, Entity* containedI
 }
 
 Entity::~Entity(){
-	for (list<Entity*>::reverse_iterator it = entitiesContained.rbegin(); it != entitiesContained.rend(); ++it)
-	{
-		if ((*it) != nullptr) {
-			delete *it;
-			(*it) = nullptr;
-		}
-	}
 }
 
 void Entity::Look() const{

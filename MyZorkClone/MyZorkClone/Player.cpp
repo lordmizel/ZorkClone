@@ -126,19 +126,17 @@ bool Player::Go(const vector<string>& args)
 			ChangeContainer(exit->GetDestination());
 			containedIn->Look();
 			exit->LockState(false);
-			//TODO : Mirar de implementar un unlock
 		}
 		else {
 			cout << "Seems like this door is locked." << endl;
+			return false;
 		}
-		
 	}
 	else {
-
 		ChangeContainer(exit->GetDestination());
 		containedIn->Look();
-		return true;
 	}
+	return true;
 }
 
 bool Player::Attack(const vector<string>& args)
@@ -148,11 +146,10 @@ bool Player::Attack(const vector<string>& args)
 		cout << "Which means not well at all." << endl;
 		currentHP -= 1;
 		AssessHP();
-		return false;
 	}
 	else if (containedIn->Find(args[1], NPC)) {
 		AttackNPC(args[1], this);
-		return false;
+		return true;
 	}
 	else {
 		cout << "That's not something you can attack. So let's say you attack the air instead. :)" << endl;
@@ -164,11 +161,10 @@ bool Player::Talk(const vector<string>& args)
 {
 	if (containedIn->Find(args[1], MONSTER)) {
 		cout << "Monsters aren't much for conversation." << endl;
-		return false;
 	}
 	else if (containedIn->Find(args[1], NPC)) {
 		TalkNPC(args[1], this);
-		return false;
+		return true;
 	}
 	else {
 		cout << "... What, you've got an imaginary friend now...?" << endl;

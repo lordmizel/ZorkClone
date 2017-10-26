@@ -33,6 +33,7 @@ int main() {
 				cout << key;
 			}
 			else {
+				vector<string> actionCommands = TokenizeString(StringToUppercase(action));
 				if (action == "QUIT")
 				{
 					break;
@@ -40,7 +41,6 @@ int main() {
 				else
 				{
 					cout << endl;
-					vector<string> actionCommands = TokenizeString(StringToUppercase(action));
 					gameWorld.TakeAction(actionCommands);
 					action = "";
 				}

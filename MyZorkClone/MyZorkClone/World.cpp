@@ -15,6 +15,8 @@ using namespace std;
 
 
 World::World(){
+	srand((unsigned int)time(NULL));
+
 	cout << "ZORKEMON: RUSTY PEBBLE EDITION" << endl;
 	cout << "==============================" << endl << endl;
 	cout << "Welcome to the world of Zorkemon!" << endl;
@@ -36,14 +38,24 @@ World::World(){
 	Room* laboratory = new Room("LABORATORY", "Professor Stump's laboratory. There's cool technological stuff you don't really understand laying around everywhere.");
 	Room* backyard = new Room("BACKYARD", "Stump's backyard is not too unlike a jungle. One thing is certain: she's not too keen on gardening.");
 	Room* warehouse = new Room("WAREHOUSE", "You're in a dark and creepy warehouse. You could hide a body in here and nobody would notice. Just saying...");
-	Room* trashRoom = new Room("", "");
 	entities.push_back(bedroom);
 	entities.push_back(house);
 	entities.push_back(townSquare);
 	entities.push_back(laboratory);
 	entities.push_back(backyard);
 	entities.push_back(warehouse);
-	entities.push_back(trashRoom);
+
+	// -- Npcs --
+	Npc* mother = new Npc("MOTHER", "Your mother is watching TV on the sofa while muching a bunch of chips.", house);
+	Npc* larry = new Npc("LARRY", "It's Larry. Everybody knows Larry. He's kind of obnoxious, and also ridiculously rich.", townSquare);
+	Npc* professor = new Npc("PROFESSOR", "Professor Stump is a ditzy-looking young woman wearing a labcoat way over her size and eternally unkept hair.", warehouse);
+	entities.push_back(mother);
+	entities.push_back(larry);
+	entities.push_back(professor);
+
+	// -- Player --
+	player = new Player("THE KID", "You're just a normal kid who still has a spark of peppiness in your eyes.", bedroom);
+	entities.push_back(player);
 
 	// -- Items --
 	Item* key = new Item("KEY", "This key is decorated with a cute squid keychain.", backyard);
@@ -56,10 +68,26 @@ World::World(){
 	Item* fruit = new Item("FRUIT", "It's a red, delicious-looking fruit. Looks juicy.", backyard);
 	Item* box = new Item("BOX", "This wooden crate is marked as Professor Stump's property, and is open.", warehouse, true, false);
 	Item* magazine = new Item("MAGAZINE", "There's a woman dressed as a bunny in the cover. Some Halloween costume catalog, probably.", box);
-	
-	/*entities.push_back(key);
+	Item* capsule = new Item("CAPSULE", "This is an experimental capsule designed to capture monsters.", professor);
+	Item* check = new Item("CHECK", "This check is worth 100 dollars. Make sure to exchange it next time you go to the bank.", larry);
+	entities.push_back(key);
 	entities.push_back(bookCase);
-	entities.push_back(book);*/
+	entities.push_back(bed);
+	entities.push_back(book);
+	entities.push_back(tv);
+	entities.push_back(machine);
+	entities.push_back(aquarium);
+	entities.push_back(fruit);
+	entities.push_back(box);
+	entities.push_back(magazine);
+	entities.push_back(capsule);
+	entities.push_back(check);
+
+	// -- Monster --
+	Monster* capturableMonster = new Monster("", "", backyard, true);
+	Monster* larryMonster = new Monster("", "", townSquare, false);
+	entities.push_back(capturableMonster);
+	entities.push_back(larryMonster);
 
 	// -- Exits --
 	Exit* bedroomToHouse = new Exit("STAIRS", "DOWN", "There's a set of stairs going down to the first floor.", bedroom, house);
@@ -72,7 +100,7 @@ World::World(){
 	Exit* backyardToSquare = new Exit("PATH", "TOWN", "The grassy path behind you would probably take you back to civilization.", backyard, townSquare);
 	Exit* squareToWarehouse = new Exit("WAREHOUSE", "WAREHOUSE", "There's an old warehouse nearby, with a shaky-looking door.", townSquare, warehouse, true, key);
 	Exit* warehouseToSquare = new Exit("DOOR", "TOWN", "You can always take the door back to the town square.", warehouse, townSquare);
-	/*entities.push_back(bedroomToHouse);
+	entities.push_back(bedroomToHouse);
 	entities.push_back(houseToBedroom);
 	entities.push_back(houseToSquare);
 	entities.push_back(squareToHouse);
@@ -81,39 +109,19 @@ World::World(){
 	entities.push_back(squareToBackyard);
 	entities.push_back(backyardToSquare);
 	entities.push_back(squareToWarehouse);
-	entities.push_back(warehouseToSquare);*/
+	entities.push_back(warehouseToSquare);
 
-	// -- Npcs --
-	Npc* mother = new Npc("MOTHER", "Your mother is watching TV on the sofa while muching a bunch of chips.", house);
-	Npc* larry = new Npc("LARRY", "It's Larry. Everybody knows Larry. He's kind of obnoxious and ridiculously rich.", townSquare);
-	Npc* professor = new Npc("PROFESSOR", "Professor Stump is a ditzy-looking young woman wearing a labcoat way over her size and eternally unkept hair.", warehouse);
-	/*entities.push_back(mother);
-	entities.push_back(larry);
-	entities.push_back(professor);*/
-
-	// -- Player --
-	player = new Player("THE KID", "You're just a normal kid who still has a spark of peppiness in your eyes.", bedroom);
-	/*entities.push_back(player);*/
-
-	Item* capsule = new Item("CAPSULE", "This is an experimental capsule designed to capture monsters.", player);
-
-	// -- Monster --
-	srand(time(NULL));
-	Monster* capturableMonster = new Monster("", "", backyard, true);
-	Monster* larryMonster = new Monster("", "", townSquare, false);
-	/*entities.push_back(capturableMonster);
-	entities.push_back(larryMonster);*/
+	player->ContainedIn()->Look();
+	cout << endl;
 }
 
 World::~World(){
 	for (list<Entity*>::reverse_iterator it = entities.rbegin(); it != entities.rend(); ++it) {
 		if (*it != nullptr) {
-			// TODO: Ver por que no le gusta el nullptr
 			delete *it;
 			*it = nullptr;
 		}
 	}
-
 	entities.clear();
 }
 

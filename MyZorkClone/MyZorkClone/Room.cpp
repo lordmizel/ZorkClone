@@ -8,7 +8,7 @@
 using namespace std;
 
 
-Room::Room(const string name, const string description) : Entity(name, description, nullptr)
+Room::Room(const string &name, const string &description) : Entity(name, description, nullptr)
 {
 	type = ROOM;
 }
@@ -61,7 +61,7 @@ void Room::Look() const
 	}
 }
 
-Exit * Room::GetExit(const std::string name)
+Exit * Room::GetExit(const std::string &name)
 {
 	for (list<Entity*>::const_iterator it = entitiesContained.begin(); it != entitiesContained.cend(); ++it)
 	{
