@@ -189,7 +189,7 @@ bool Player::Grab(const vector<string>& args)
 		Item* item = (Item*)containedIn->Find(args[1], ITEM);
 		if (item == nullptr)
 		{
-			cout << "Where is this " << args[1] << " you're talking about?" << endl;
+			cout << "The thing you speak of either cannot be grabbed, is INSIDE something else, or doesn't even exist at all..." << endl;
 		}
 		else
 		{
