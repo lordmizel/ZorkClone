@@ -41,7 +41,7 @@ int main() {
 				else
 				{
 					cout << endl;
-					gameWorld.TakeAction(actionCommands);
+					gameWorld.Tick(actionCommands);
 					action = "";
 				}
 			}

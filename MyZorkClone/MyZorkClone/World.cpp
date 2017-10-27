@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-#include <time.h>
 #include "Globals.h"
 #include "Exit.h"
 #include "Item.h"
@@ -16,6 +15,7 @@ using namespace std;
 
 World::World(){
 	srand((unsigned int)time(NULL));
+	timer = clock();
 
 	cout << "ZORKEMON: RUSTY PEBBLE EDITION" << endl;
 	cout << "==============================" << endl << endl;
@@ -123,6 +123,27 @@ World::~World(){
 		}
 	}
 	entities.clear();
+}
+
+void World::Tick(vector<string>& args)
+{
+	if (args.size() > 0 && args[0].length() > 0) {
+		TakeAction(args);
+	}
+	GameLoop();
+}
+
+void World::GameLoop()
+{
+	clock_t now = clock();
+
+	if ((now - timer) / CLOCKS_PER_SEC > TICK_FREQUENCY)
+	{
+		for (list<Entity*>::iterator it = entities.begin(); it != entities.end(); ++it)
+			(*it)->Tick();
+
+		timer = now;
+	}
 }
 
 void World::TakeAction(vector<string> &actions){

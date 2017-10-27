@@ -180,3 +180,37 @@ void TalkNPC(const string &name, Player * player)
 		}
 	}
 }
+
+void NPCBattleResult(Player * player, Npc * rival, bool result)
+{
+	if (rival->GetName() == "LARRY") {
+		if (result == true) {
+			cout << "=========" << endl << "YOU WON!!" << endl << "=========" << endl << endl;
+			cout << "Larry stands there, dumbfounded for a moment, before quickly going back to his usual smug self, though " << endl
+				 << "you can tell he doesn't look very happy." << endl;
+			cout << "-I guess you could say... I didn't give you enough CREDIT." << endl;
+			cout << "As the legion of fangirls leave him, you finally realize you're on your way to become a real Zorkemon " << endl
+				 << "master. You captured a monster, defeated your rival (or the person who annoyed you the most, at least) " << endl
+				 << "and demonstrated your superiority in front of the village expectators. No doubt this is a day to " << endl
+				 << "celebrate, but your adventure has only just begun!" << endl << endl;
+			cout << "THANK YOU FOR PLAYING ZORKEMON: RUSTY PEBBLE VERSION" << endl;
+			cout << "This is the end of the game, but you can still go around to talk to people in town if you wish." << endl;
+			cout << "I hope you enjoyed. :)" << endl;
+			CURRENT_EVENT = BEAT_LARRY;
+		}
+		else {
+			cout << "==========" << endl << "YOU LOST!!" << endl << "==========" << endl << endl;
+			cout << "Larry's fangirls use dollar bills as confetti to celebrate his victory." << endl;
+			cout << "-It is only natural for those who have been born in the lowest tiers of class hierarchy to lose " << endl
+				 << "against those placed rightfully on top. Do not feel ashamed, this is just nature taking it's course." << endl;
+			cout << "He then claps his hand twice and a butler approaches, using a potion on your monster." << endl;
+			cout << "-If you want to try again don't let me stop you.- Smiles Larry. -Each time I win is more positive " << endl
+				 << "feedback for the sponsors of my multibillion dollar company." << endl;
+			Creature* playerMonster = (Creature*)player->Find("CAPSULE", ITEM)->Find(MONSTER);
+			int monsterMaxHP = playerMonster->GetMaxHP();
+			playerMonster->SetCurrentHP(monsterMaxHP);
+		}
+	}
+}
+
+

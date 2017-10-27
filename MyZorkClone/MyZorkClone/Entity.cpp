@@ -15,6 +15,11 @@ Entity::Entity(const string &name, const string &description, Entity* containedI
 Entity::~Entity(){
 }
 
+void Entity::Tick()
+{
+	// Function reserved for real-time features, if any
+}
+
 void Entity::Look() const{
 	cout << description << endl;
 }
