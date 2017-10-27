@@ -15,7 +15,6 @@ void ChangeEvent(Event &newEvent)
 string StringToUppercase(string & myString)
 {
 	int i = 0;
-	char c;
 	while (myString[i])
 	{
 		myString[i] = toupper(myString[i]);
