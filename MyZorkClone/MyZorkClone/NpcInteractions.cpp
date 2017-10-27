@@ -14,19 +14,22 @@ bool capsuleGiven = false;
 
 void AttackNPC(const string &name, Player* player)
 {
-	if (name == "MOTHER") {
+	if (name == "MOTHER") 
+	{
 		cout << "Just before you can act, your mother sends one of her trademarked icy stares at you." << endl;
 		cout << "-And what, pray tell, are you plotting exactly?- she asks in what seems like a mix " << endl
 			 << "between a growl and a whisper." << endl;
 		cout << "You KNOW she's onto you. Your survival incstinct is telling you to avoid any " << endl
 			 << "aggressive course of action towards your mother, or else you could actually DIE." << endl;
 	}
-	else if (name == "LARRY") {
+	else if (name == "LARRY") 
+	{
 		cout << "Larry simply laughs at you and throws a pack of bills at your face. The impact throws you " << endl
 			 << "off-track and makes you fall over." << endl;
 		cout << "-Serves you right! I have far too much money for you to ever dream of hitting me anyway!" << endl;
 	}
-	else if (name == "PROFESSOR") {
+	else if (name == "PROFESSOR") 
+	{
 		cout << "Right as you try to punch Stump, you feel an electrical discharge rock through your " << endl
 			 << "body." << endl;
 		cout << "-My, oh, my!- The Professor exclaims. -Typical of your kind to try and resort to " << endl
@@ -41,8 +44,10 @@ void AttackNPC(const string &name, Player* player)
 
 void TalkNPC(const string &name, Player * player)
 {
-	if (name == "MOTHER") {
-		if (player->GetCurrentHP() < player->GetMaxHP()) {
+	if (name == "MOTHER") 
+	{
+		if (player->GetCurrentHP() < player->GetMaxHP()) 
+		{
 			cout << "Your mother raises an eyebrow when she sees you. -Geez, how do you always manage to get yourself into " << endl
 				 << "so much trouble?- She then offers you a piece of cake." << endl;
 			cout << "As you eat, you feel your wounds healing themselves." << endl;
@@ -55,7 +60,8 @@ void TalkNPC(const string &name, Player * player)
 		} 
 		else
 		{
-			switch (CURRENT_EVENT) {
+			switch (CURRENT_EVENT) 
+			{
 			case START:
 				cout << "-So the day has finally come, hasn't it?- She says as she grabs some chips from the bag. -When I " << endl
 					 << "was your age I too went on a journey to become a Zorkemon master... whatever that means. However, " << endl
@@ -88,9 +94,11 @@ void TalkNPC(const string &name, Player * player)
 	}
 	else if (name == "LARRY") 
 	{
-		switch (CURRENT_EVENT) {
+		switch (CURRENT_EVENT) 
+		{
 		case START:
-			if (!checkGiven) {
+			if (!checkGiven) 
+			{
 				cout << "Larry diverges his attention from his legion of fangirls and smirks as he sees you come closer." << endl;
 				cout << "-Oh, hello, did you come to see if I had some spare change to give? Here, let me help your " << endl
 					 << "moneyless self to get a bit further away from your misery." << endl;
@@ -117,7 +125,8 @@ void TalkNPC(const string &name, Player * player)
 				 << "not accusing me, are you? The professor is kinda amusing, even by commoner standards. What's the point " << endl
 				 << "of an entertainer if you're going to keep her locked up?" << endl;
 			break;
-		case GOT_MONSTER: {
+		case GOT_MONSTER: 
+		{
 			cout << "-You have a monster? You?- He looks actually surprised. -I must admit I didn't expect for a low-born " << endl
 				<< "such as yourself to actually have one. I do train monsters as well, see? Naturally, my list of " << endl
 				<< "achievements is just as large as the number of digits in my bank account. Allow me to show you..." << endl;
@@ -136,8 +145,10 @@ void TalkNPC(const string &name, Player * player)
 	}
 	else if (name == "PROFESSOR")
 	{
-		switch (CURRENT_EVENT) {
-		case START: {
+		switch (CURRENT_EVENT) 
+		{
+		case START: 
+		{
 			cout << "The professor greets you when you come close. -Oh! F-finally! I thought I was gonna die in here. Someone locked " << endl
 				 << "me inside when I was busy looking for some pieces to tinker around..." << endl;
 			cout << "She adjusts her glasses and looks around. -I know! Come and see me at the lab. I might have something to give " << endl
@@ -152,7 +163,8 @@ void TalkNPC(const string &name, Player * player)
 			break;
 		}
 		case PROFESSOR_FOUND: 
-			if (!capsuleGiven) {
+			if (!capsuleGiven) 
+			{
 				cout << "-Ah! There you are! Here, let me give you this as thanks.- She gives a small spherical capsule to you. -It's a " << endl
 					 << "monster capsule, created by none other than me! I don't have an IQ of over 200 for nothing!- She laughs." << endl;
 				cout << "-Just use it on a monster and you will capture it! Since it's a special capsule made by me, there's no way the " << endl
@@ -162,7 +174,8 @@ void TalkNPC(const string &name, Player * player)
 				
 				capsuleGiven = true;
 			}
-			else {
+			else 
+			{
 				cout << "The professor is eating a fried squid ring sandwich." << endl;
 				cout << "-Rememfer: ufe dee capfule on a monftah do capfure eet.- She says with her mouth full. Looks like she's busy." << endl;
 			}
@@ -183,8 +196,10 @@ void TalkNPC(const string &name, Player * player)
 
 void NPCBattleResult(Player * player, Npc * rival, bool result)
 {
-	if (rival->GetName() == "LARRY") {
-		if (result == true) {
+	if (rival->GetName() == "LARRY") 
+	{
+		if (result == true) 
+		{
 			cout << "=========" << endl << "YOU WON!!" << endl << "=========" << endl << endl;
 			cout << "Larry stands there, dumbfounded for a moment, before quickly going back to his usual smug self, though " << endl
 				 << "you can tell he doesn't look very happy." << endl;
@@ -198,7 +213,8 @@ void NPCBattleResult(Player * player, Npc * rival, bool result)
 			cout << "I hope you enjoyed. :)" << endl;
 			CURRENT_EVENT = BEAT_LARRY;
 		}
-		else {
+		else 
+		{
 			cout << "==========" << endl << "YOU LOST!!" << endl << "==========" << endl << endl;
 			cout << "Larry's fangirls use dollar bills as confetti to celebrate his victory." << endl;
 			cout << "-It is only natural for those who have been born in the lowest tiers of class hierarchy to lose " << endl

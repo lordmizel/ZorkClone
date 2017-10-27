@@ -30,7 +30,8 @@ void BattleStart(Monster * playerMonster, Monster * enemyMonster, Player* player
 void EnemyChangeStance()
 {
 	enemyStance = BattleStance(rand() % 3);
-	switch ((int)enemyStance) {
+	switch ((int)enemyStance) 
+	{
 	case 0:
 		cout << "The enemy " << ENEMY_MONSTER->GetName() << " is popping a vein!" << endl;
 		break;
@@ -46,8 +47,10 @@ void EnemyChangeStance()
 
 void SolveMatch(const string & stanceChosen)
 {
-	if (stanceChosen == "STRONG") {
-		switch ((int)enemyStance) {
+	if (stanceChosen == "STRONG") 
+	{
+		switch ((int)enemyStance) 
+		{
 		case 0:
 			cout << "Both your " << YOUR_MONSTER->GetName() << " and the enemy " << ENEMY_MONSTER->GetName() << " clash with a gigantic impact!!" << endl;
 			cout << "When the dust settles, both Zorkemon seem to be standing. Looks like they cancelled each other's attack!" << endl;
@@ -63,8 +66,11 @@ void SolveMatch(const string & stanceChosen)
 			YOUR_MONSTER->Hurt();
 			break;
 		}
-	} else if (stanceChosen == "FAST"){
-		switch ((int)enemyStance) {
+	} 
+	else if (stanceChosen == "FAST")
+	{
+		switch ((int)enemyStance) 
+		{
 		case 0:
 			cout << "Your " << YOUR_MONSTER->GetName() << " dashes towards the enemy " << ENEMY_MONSTER->GetName() << "!!" << endl;
 			cout << "But it doesn't look like it's attack has even scratched it's massive bulk! In fact it hurt itself simply by trying!" << endl;
@@ -81,8 +87,10 @@ void SolveMatch(const string & stanceChosen)
 			break;
 		}
 	}
-	else if (stanceChosen == "SNEAKY") {
-		switch ((int)enemyStance) {
+	else if (stanceChosen == "SNEAKY") 
+	{
+		switch ((int)enemyStance) 
+		{
 		case 0:
 			cout << "The enemy " << ENEMY_MONSTER->GetName() << " unleashes a gigantic tackle against " << YOUR_MONSTER->GetName() << "!!" << endl;
 			cout << "Your monster was expecting that! It quickly throws sand in the enemy monsters eyes in order to blind and hit him!" << endl;
@@ -103,14 +111,16 @@ void SolveMatch(const string & stanceChosen)
 	ENEMY_MONSTER->AssessHP();
 	YOUR_MONSTER->AssessHP();
 
-	if (ENEMY_MONSTER->GetCurrentHP() <= 0) {
+	if (ENEMY_MONSTER->GetCurrentHP() <= 0) 
+	{
 		cout << "YOU WIN!!" << endl;
-		
 	}
-	else if (YOUR_MONSTER->GetCurrentHP() <= 0) {
+	else if (YOUR_MONSTER->GetCurrentHP() <= 0) 
+	{
 		cout << "YOU LOSE!!" << endl;
 	}
-	else {
+	else 
+	{
 		EnemyChangeStance();
 		cout << "Please choose the type of attack you want to do: Write STRONG, FAST or SNEAKY." << endl << endl;
 	}

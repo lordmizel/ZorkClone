@@ -13,7 +13,8 @@ using namespace std;
 void UseOneItem(Entity * item, Player* player)
 {
 	string name = item->GetName();
-	if (name == "BOOK") {
+	if (name == "BOOK") 
+	{
 		cout << "You start reading the book:" << endl;
 		cout << "A monster can attack it's adversaries in a variety of ways. Bust there's basically three cathegories of " << endl
 			 << "attacks: FAST, STRONG and SNEAKY." << endl;
@@ -28,14 +29,16 @@ void UseOneItem(Entity * item, Player* player)
 			 << "is moving too fast, as they're harder to predict and don't leave you much time to plan your counter." << endl;
 		cout << "Keeping a close eye on your rival is essential to becoming a true Zorkemon master!!" << endl;
 	}
-	else if (name == "MAGAZINE") {
+	else if (name == "MAGAZINE") 
+	{
 		cout << "You start reading the magazine and..." << endl << "... oh..." << endl << "... OH... OH, MY..." << endl;
 		cout << "You probably shouldn't be looking at these pages..." << endl;
 		cout << "You actually got hurt because of nosebleed hemorrage." << endl;
 		player->Hurt();
 		player->AssessHP();
 	}
-	else if (name == "FRUIT") {
+	else if (name == "FRUIT") 
+	{
 		cout << "You take a bite out of the juicy fruit." << endl;
 		cout << "It turns out to be poisonous. OF COURSE IT IS. WHAT DID YOU EXPECT??" << endl;
 		cout << "You're hurt because of bellyache." << endl;
@@ -43,7 +46,8 @@ void UseOneItem(Entity * item, Player* player)
 		player->AssessHP();
 		item->ChangeContainer(nullptr);
 	}
-	else {
+	else 
+	{
 		cout << "You can't just USE it like that..." << endl;
 	}
 }
@@ -51,26 +55,33 @@ void UseOneItem(Entity * item, Player* player)
 void UseTwoItems(Entity * item1, Entity * item2, Player* player)
 {
 	string name1 = item1->GetName();
-	if (name1 == "CAPSULE") {
-		if (item2->GetType() == MONSTER) {
+	if (name1 == "CAPSULE") 
+	{
+		if (item2->GetType() == MONSTER) 
+		{
 			Monster* monster = (Monster*)item2;
-			if (monster->IsCapturable() == true) {
+			if (monster->IsCapturable() == true) 
+			{
 				monster->ChangeContainer(item1);
 				CURRENT_EVENT = GOT_MONSTER;
 				cout << "You caught the " << monster->GetName() << "!! Your first step in order to become a true Zorkemon master!!" << endl;
 			}
-			else {
+			else 
+			{
 				cout << "That monster already has an owner! You can't steal monsters who pertain to other people!" << endl;
 			}
 		}
-		else {
+		else 
+		{
 			cout << "The capsule is used to capture monsters. That " << item2->GetName() << " is not a monster." << endl;
 		}
 	}
-	else if (name1 == "KEY"){
+	else if (name1 == "KEY")
+	{
 		cout << "Just walk through a locked door with the key in your inventory and you will open it." << endl;
 	}
-	else {
+	else 
+	{
 		cout << "That doesn't seem to make much sense..." << endl;
 	}
 }

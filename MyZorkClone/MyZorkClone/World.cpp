@@ -13,7 +13,8 @@
 using namespace std;
 
 
-World::World(){
+World::World()
+{
 	srand((unsigned int)time(NULL));
 	timer = clock();
 
@@ -27,6 +28,7 @@ World::World(){
 		 << "embark on an adventurous journey through the world. Because that sounds like a completely " << endl 
 		 << "responsible thing for parents to let their kids do." << endl;
 	cout << "You are one such kid. You just turned 10 and are ready to start on your magical Zorkemon journey!" << endl;
+	cout << "Your resolve for the day: Beat your first rival trainer in battle!" << endl;
 	cout << "May god have mercy on your soul." << endl << endl;
 
 	//CREATING ENTITIES
@@ -62,7 +64,7 @@ World::World(){
 	Item* bookCase = new Item("BOOKCASE", "This is just your typical run of the mill bookcase.", bedroom, true, false);
 	Item* bed = new Item("BED", "Your bed. It's undone, as per usual. The sheets have dragon drawings.", bedroom, false, false);
 	Item* book = new Item("BOOK", "It is called 'Tips and Tricks for the Rookie Monster Trainer'.", bookCase);
-	Item* tv = new Item("TV", "The TV is on, but you fear watching it for too long might have a negative impact on your neurones.", bedroom, false, false);
+	Item* tv = new Item("TV", "The TV is on, but you fear watching it for too long might have a negative impact on your neurones.", house, false, false);
 	Item* machine = new Item("MACHINE", "It's a weird fantastical multi-colored machine from the future!", laboratory, false, false);
 	Item* aquarium = new Item("AQUARIUM", "There's a bunch of cephalopods swimming around in there.", laboratory, true, false);
 	Item* fruit = new Item("FRUIT", "It's a red, delicious-looking fruit. Looks juicy.", backyard);
@@ -115,9 +117,12 @@ World::World(){
 	cout << endl;
 }
 
-World::~World(){
-	for (list<Entity*>::reverse_iterator it = entities.rbegin(); it != entities.rend(); ++it) {
-		if (*it != nullptr) {
+World::~World()
+{
+	for (list<Entity*>::reverse_iterator it = entities.rbegin(); it != entities.rend(); ++it) 
+	{
+		if (*it != nullptr) 
+		{
 			delete *it;
 			*it = nullptr;
 		}
@@ -127,7 +132,8 @@ World::~World(){
 
 void World::Tick(vector<string>& args)
 {
-	if (args.size() > 0 && args[0].length() > 0) {
+	if (args.size() > 0 && args[0].length() > 0) 
+	{
 		TakeAction(args);
 	}
 	GameLoop();
@@ -139,16 +145,20 @@ void World::GameLoop()
 
 	if ((now - timer) / CLOCKS_PER_SEC > TICK_FREQUENCY)
 	{
-		for (list<Entity*>::iterator it = entities.begin(); it != entities.end(); ++it)
+		for (list<Entity*>::iterator it = entities.begin(); it != entities.end(); ++it) 
+		{
 			(*it)->Tick();
-
+		}
 		timer = now;
 	}
 }
 
-void World::TakeAction(vector<string> &actions){
-	if (!GAME_OVER) {
-		if (!IN_BATTLE) {
+void World::TakeAction(vector<string> &actions)
+{
+	if (!GAME_OVER) 
+	{
+		if (!IN_BATTLE) 
+		{
 			//Normal game commands
 			switch (actions.size())
 			{
@@ -254,7 +264,8 @@ void World::TakeAction(vector<string> &actions){
 			}
 		}
 	}
-	else {
+	else 
+	{
 		cout << "You can't do anything when you're dead. This is not a zombie game." << endl << "Type QUIT to end the game." << endl << endl;
 	}
 	return;

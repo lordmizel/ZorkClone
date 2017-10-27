@@ -11,7 +11,8 @@
 using namespace std;
 
 
-Player::Player(const string name, const string description, Room * room) : Creature(name, description, room) {
+Player::Player(const string name, const string description, Room * room) : Creature(name, description, room) 
+{
 	type = PLAYER;
 	maxHP = 3;
 	currentHP = maxHP;
@@ -23,7 +24,8 @@ Player::~Player()
 
 void Player::AssessHP() const
 {
-	if (currentHP <= 0) {
+	if (currentHP <= 0) 
+	{
 		GAME_OVER = true;
 		cout << "You're too beat up to go on. Looks like your adventure ends here. :(" << endl;
 		cout << "=========" << "GAME OVER" << "=========" << endl << endl;
@@ -121,18 +123,21 @@ bool Player::Go(const vector<string>& args)
 	}
 	if (exit->IsLocked() == true)
 	{
-		if (Find("KEY", ITEM)) {
+		if (Find("KEY", ITEM)) 
+		{
 			cout << "You used the key to open the door." << endl;
 			ChangeContainer(exit->GetDestination());
 			containedIn->Look();
 			exit->LockState(false);
 		}
-		else {
+		else 
+		{
 			cout << "Seems like this door is locked." << endl;
 			return false;
 		}
 	}
-	else {
+	else 
+	{
 		ChangeContainer(exit->GetDestination());
 		containedIn->Look();
 	}
@@ -141,13 +146,15 @@ bool Player::Go(const vector<string>& args)
 
 bool Player::Attack(const vector<string>& args)
 {
-	if (containedIn->Find(args[1], MONSTER)) {
+	if (containedIn->Find(args[1], MONSTER)) 
+	{
 		cout << "You try to attack the monster without any plan and it goes just as well as you'd expect." << endl;
 		cout << "Which means not well at all." << endl;
 		currentHP -= 1;
 		AssessHP();
 	}
-	else if (containedIn->Find(args[1], NPC)) {
+	else if (containedIn->Find(args[1], NPC)) 
+	{
 		AttackNPC(args[1], this);
 		return true;
 	}
@@ -159,14 +166,17 @@ bool Player::Attack(const vector<string>& args)
 
 bool Player::Talk(const vector<string>& args)
 {
-	if (containedIn->Find(args[1], MONSTER)) {
+	if (containedIn->Find(args[1], MONSTER)) 
+	{
 		cout << "Monsters aren't much for conversation." << endl;
 	}
-	else if (containedIn->Find(args[1], NPC)) {
+	else if (containedIn->Find(args[1], NPC)) 
+	{
 		TalkNPC(args[1], this);
 		return true;
 	}
-	else {
+	else 
+	{
 		cout << "... What, you've got an imaginary friend now...?" << endl;
 	}
 	return false;
@@ -174,7 +184,8 @@ bool Player::Talk(const vector<string>& args)
 
 bool Player::Grab(const vector<string>& args)
 {
-	if (args.size() == 2) {
+	if (args.size() == 2) 
+	{
 		Item* item = (Item*)containedIn->Find(args[1], ITEM);
 		if (item == nullptr)
 		{
@@ -182,17 +193,20 @@ bool Player::Grab(const vector<string>& args)
 		}
 		else
 		{
-			if (item->IsGrabbable()) {
+			if (item->IsGrabbable()) 
+			{
 				cout << "You grab the " << args[1] << "." << endl;
 				item->ChangeContainer(this);
 				return true;
 			}
-			else {
+			else 
+			{
 				cout << "You can't just go around carrying that thing, you nincompoop!" << endl;
 			}
 		}
 	}
-	else if (args.size() == 4) {
+	else if (args.size() == 4) 
+	{
 		Item* container = (Item*)containedIn->Find(args[3], ITEM);
 		if (container == nullptr)
 		{
@@ -206,12 +220,14 @@ bool Player::Grab(const vector<string>& args)
 				cout << "There's no " << args[1] << " in that " << args[3] << "." << endl;
 			}
 			else {
-				if (item->IsGrabbable()) {
+				if (item->IsGrabbable()) 
+				{
 					cout << "You grab the " << args[1] << "." << endl;
 					item->ChangeContainer(this);
 					return true;
 				}
-				else {
+				else 
+				{
 					cout << "You can't just go around carrying that thing, you nincompoop!" << endl;
 				}
 			}
@@ -227,7 +243,8 @@ bool Player::Drop(const vector<string>& args) const
 	{
 		cout << "You don't have any " << args[1] << "." << endl;
 	}
-	else if (args[1] == "CAPSULE") {
+	else if (args[1] == "CAPSULE") 
+	{
 		cout << "A true Zorkemon master will never drop his capsules!" << endl;
 	}
 	else
@@ -242,13 +259,15 @@ bool Player::Drop(const vector<string>& args) const
 bool Player::Put(const vector<string>& args) const
 {
 	Entity* item = Find(args[1], ITEM);
-	if (item == nullptr) {
+	if (item == nullptr) 
+	{
 		cout << "You're not carrying any " << args[1] << "." << endl;
 		return false;
 	}
 	for (list<Entity*>::iterator it = containedIn->entitiesContained.begin(); it != containedIn->entitiesContained.cend(); ++it)
 	{
-		if ((*it)->GetName() == args[3]) {
+		if ((*it)->GetName() == args[3]) 
+		{
 			cout << "You put the " << args[1] << " in the " << args[3] << "." << endl;
 			item->ChangeContainer(*it);
 			return true;
@@ -261,18 +280,22 @@ bool Player::Put(const vector<string>& args) const
 bool Player::Use(const vector<string>& args)
 {
 	Entity* item = Find(args[1], ITEM);
-	if (item == nullptr) {
+	if (item == nullptr) 
+	{
 		cout << "You're not carrying any " << args[1] << "." << endl;
 		return false;
 	}
 
-	if (args.size() == 2) {
+	if (args.size() == 2) 
+	{
 		UseOneItem((Entity*)item, this);
 	}
-	else {
+	else 
+	{
 		for (list<Entity*>::iterator it = containedIn->entitiesContained.begin(); it != containedIn->entitiesContained.cend(); ++it)
 		{
-			if ((*it)->GetName() == args[3]) {
+			if ((*it)->GetName() == args[3]) 
+			{
 				UseTwoItems((Entity*)item, (*it), this);
 				return true;
 			}

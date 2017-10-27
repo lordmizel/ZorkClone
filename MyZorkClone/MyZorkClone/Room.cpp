@@ -13,7 +13,8 @@ Room::Room(const string &name, const string &description) : Entity(name, descrip
 	type = ROOM;
 }
 
-Room::~Room(){
+Room::~Room()
+{
 }
 
 void Room::Look() const

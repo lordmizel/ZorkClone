@@ -30,7 +30,8 @@ void Monster::Look() const
 
 void Monster::AssessHP() const
 {
-	if (currentHP <= 0) {
+	if (currentHP <= 0) 
+	{
 		cout << name << " gives out a cry and falls defeated to the ground!!" << endl;
 	} 
 	else if (currentHP == maxHP)

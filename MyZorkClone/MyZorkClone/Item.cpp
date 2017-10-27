@@ -28,8 +28,10 @@ void Item::Look() const
 {
 	cout << description << endl;
 
-	if (isContainer == true) {
-		for (list<Entity*>::const_iterator it = this->entitiesContained.begin(); it != this->entitiesContained.cend(); ++it) {
+	if (isContainer == true) 
+	{
+		for (list<Entity*>::const_iterator it = this->entitiesContained.begin(); it != this->entitiesContained.cend(); ++it) 
+		{
 			cout << "There's a " << (*it)->GetName() << " in the " << name << "." << endl;
 		}
 	}

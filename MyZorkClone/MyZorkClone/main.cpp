@@ -8,7 +8,8 @@
 using namespace std;
 
 
-int main() {
+int main() 
+{
 	World gameWorld;
 	char key;
 	string action;
