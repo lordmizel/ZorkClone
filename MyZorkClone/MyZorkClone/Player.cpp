@@ -304,7 +304,3 @@ bool Player::Use(const vector<string>& args)
 	}
 	return false;
 }
-
-void Player::Tick()
-{
-}

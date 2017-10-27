@@ -210,7 +210,7 @@ void NPCBattleResult(Player * player, Npc * rival, bool result)
 				 << "celebrate, but your adventure has only just begun!" << endl << endl;
 			cout << "THANK YOU FOR PLAYING ZORKEMON: RUSTY PEBBLE VERSION" << endl;
 			cout << "This is the end of the game, but you can still go around to talk to people in town if you wish." << endl;
-			cout << "I hope you enjoyed. :)" << endl;
+			cout << "I hope you enjoyed. :)" << endl << endl;
 			CURRENT_EVENT = BEAT_LARRY;
 		}
 		else 
@@ -221,7 +221,7 @@ void NPCBattleResult(Player * player, Npc * rival, bool result)
 				 << "against those placed rightfully on top. Do not feel ashamed, this is just nature taking it's course." << endl;
 			cout << "He then claps his hand twice and a butler approaches, using a potion on your monster." << endl;
 			cout << "-If you want to try again don't let me stop you.- Smiles Larry. -Each time I win is more positive " << endl
-				 << "feedback for the sponsors of my multibillion dollar company." << endl;
+				 << "feedback for the sponsors of my multibillion dollar company." << endl << endl;
 			Creature* playerMonster = (Creature*)player->Find("CAPSULE", ITEM)->Find(MONSTER);
 			int monsterMaxHP = playerMonster->GetMaxHP();
 			playerMonster->SetCurrentHP(monsterMaxHP);

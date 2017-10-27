@@ -24,8 +24,8 @@ public:
 	bool Drop(const std::vector<std::string>& args) const;
 	bool Put(const std::vector<std::string>& args) const;
 	bool Use(const std::vector<std::string>& args);
-	
-	virtual void Tick();
+
 private:
+
 };
 #endif
