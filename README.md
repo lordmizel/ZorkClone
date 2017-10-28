@@ -11,6 +11,11 @@ into a Pokèmon parody. This version of Zork contains NPC dialogues that change 
 game, monsters with randomly generated descriptions, and a rock-paper-scissors type of battle event.
 
 
+## LINK TO THE REPOSITORY
+
+https://github.com/lordmizel/ZorkClone
+
+
 ## HOW TO PLAY
 
 Just like in regular Zork fashion, the player must type action commands in order for the character to
