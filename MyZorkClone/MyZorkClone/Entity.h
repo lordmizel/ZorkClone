@@ -1,8 +1,10 @@
 #ifndef __Entity__
 #define __Entity__
 
+#include <iostream>
 #include <list>
 #include <string>
+
 
 enum typeOfEntity {
 	ENTITY,

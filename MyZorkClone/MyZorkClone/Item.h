@@ -2,7 +2,9 @@
 #define __Item__
 
 #include "Entity.h"
-#include "Room.h"
+
+
+class Room;
 
 class Item : public Entity {
 public:

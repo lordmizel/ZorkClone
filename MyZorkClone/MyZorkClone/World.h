@@ -4,11 +4,13 @@
 #include <iostream>
 #include <vector>
 #include <time.h>
-#include "Entity.h"
-#include "Player.h"
+#include <list>
 
 #define TICK_FREQUENCY 0.5f
 
+
+class Entity;
+class Player;
 
 class World {
 public:

@@ -1,5 +1,3 @@
-#include <iostream>
-#include <string>
 #include "Entity.h"
 
 using namespace std;

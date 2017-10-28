@@ -1,6 +1,5 @@
-#include <iostream>
 #include "Item.h"
-#include "Entity.h"
+#include "Room.h"
 
 using namespace std;
 

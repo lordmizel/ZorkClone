@@ -1,9 +1,9 @@
-#include <iostream>
 #include "Creature.h"
 #include "Monster.h"
 #include "Room.h"
 #include "Item.h"
 #include "Npc.h"
+#include "Exit.h"
 
 using namespace std;
 

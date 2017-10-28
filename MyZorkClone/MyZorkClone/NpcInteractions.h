@@ -2,9 +2,10 @@
 #define __NPC_INTERACTIONS__
 
 #include <iostream>
-#include "Npc.h"
+#include <string>
 
 class Player;
+class Npc;
 
 void AttackNPC(const std::string &name, Player* player);
 void TalkNPC(const std::string &name, Player* player);

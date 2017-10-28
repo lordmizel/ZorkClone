@@ -1,7 +1,6 @@
 #ifndef __ItemUsage__
 #define __ItemUsage__
 
-#include "Entity.h"
 
 class Entity;
 class Player;

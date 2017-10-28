@@ -1,5 +1,3 @@
-#include <iostream>
-#include <string>
 #include "MonsterCreator.h"
 #include "Monster.h"
 #include "Room.h"

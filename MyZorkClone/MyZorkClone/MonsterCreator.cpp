@@ -1,4 +1,5 @@
 #include <cstdlib>
+#include <assert.h>
 #include "MonsterCreator.h"
 
 using namespace std;
@@ -27,7 +28,7 @@ vector<string> secondPartOfName = {
 	"MEOW",
 	"URSUS",
 	"SUSHI",
-	"HOPPER",
+	"AROO",
 	"CAW",
 	"PLUCK",
 	"SQUEAK",
@@ -102,10 +103,9 @@ vector<string> extraInfo = {
 
 void CreateMonster(string & name, string & description, string & description2)
 {
-	
-	//TODO: Test firstPartOfName is the same size as specialPower
-	//TODO: Test secondPartOfName is the same size as typeOfAnimal
-
+	assert(firstPartOfName.size() == specialPower.size());
+	assert(secondPartOfName.size() == typeOfAnimal.size());
+		
 	int creaturePower = rand() % firstPartOfName.size();
 	int creatureType = rand() % secondPartOfName.size();
 	

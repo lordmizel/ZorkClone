@@ -4,8 +4,10 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "Monster.h"
-#include "Room.h"
+
+
+class Room;
+class Monster;
 
 void CreateMonster(std::string &name, std::string &description, std::string &description2);
 

@@ -1,8 +1,6 @@
 #ifndef __Monster__
 #define __Monster__
 
-#include <string>
-#include "Entity.h"
 #include "Creature.h"
 
 class Room;

@@ -2,9 +2,8 @@
 #define __Player__
 
 #include <vector>
-#include <string>
-#include "Entity.h"
 #include "Creature.h"
+
 
 class Room;
 

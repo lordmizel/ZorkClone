@@ -1,11 +1,10 @@
-#include <iostream>
-#include <vector>
+#include "Entity.h"
+#include "Player.h"
 #include "Globals.h"
 #include "Exit.h"
 #include "Item.h"
 #include "Npc.h"
 #include "Monster.h"
-#include "Player.h"
 #include "Room.h"
 #include "World.h"
 #include "Battle.h"
@@ -18,7 +17,7 @@ World::World()
 	srand((unsigned int)time(NULL));
 	timer = clock();
 
-	cout << "ZORKEMON: RUSTY PEBBLE EDITION" << endl;
+	cout << "ZORKEMON: RUSTY PEBBLE VERSION" << endl;
 	cout << "==============================" << endl << endl;
 	cout << "Welcome to the world of Zorkemon!" << endl;
 	cout << "In this world, people live alongside these mysterious beings called Zorkemon." << endl;

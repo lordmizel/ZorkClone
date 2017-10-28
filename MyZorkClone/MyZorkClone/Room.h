@@ -2,7 +2,9 @@
 #define __Room__
 
 #include "Entity.h"
-#include "Exit.h"
+
+
+class Exit;
 
 class Room : public Entity {
 public:

@@ -2,6 +2,8 @@
 #define __Battle__
 
 #include <iostream>
+#include <string>
+
 
 class Monster;
 class Player;

@@ -1,10 +1,11 @@
-#include <iostream>
-#include <string>
 #include "NpcInteractions.h"
 #include "Player.h"
+#include "Npc.h"
 #include "Item.h"
 #include "Globals.h"
 #include "Battle.h"
+#include "Exit.h"
+#include "Room.h"
 
 using namespace std;
 

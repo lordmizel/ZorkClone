@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Npc.h"
 #include "Room.h"
 

@@ -1,7 +1,7 @@
 #ifndef __Exit__
 #define __Exit__
 
-#include <string>
+
 #include "Entity.h"
 
 class Room;

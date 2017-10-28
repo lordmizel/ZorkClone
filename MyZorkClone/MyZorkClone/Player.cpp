@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Globals.h"
 #include "Exit.h"
 #include "Item.h"
@@ -98,6 +97,11 @@ void Player::Look(const vector<string>& args) const
 			{
 				cout << "You have a " << (*it)->GetName() << " in your inventory." << endl;
 				(*it)->Look();
+				if (args[1] == "CAPSULE" && Find("CAPSULE", ITEM)->Find(MONSTER)) {
+					Monster* monster = (Monster*)Find("CAPSULE", ITEM)->Find(MONSTER);
+					cout << "Your capsule contains a " << monster->GetName() << "." << endl;
+					monster->Look();
+				}
 				return;
 			}
 		}

@@ -1,8 +1,6 @@
 #ifndef __NPC__
 #define __NPC__
 
-#include <string>
-#include "Entity.h"
 #include "Creature.h"
 
 class Room;
